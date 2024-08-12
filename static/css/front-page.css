@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "Aboreto";
+  color: white;
+}
+
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px white solid;
+}
+
+#top-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 4.5rem;
+  background-color: #466e64;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+}
+#top-bar > * {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+#top-bar > *:first-child {
+  justify-content: left;
+}
+#top-bar > *:last-child {
+  justify-content: right;
+}
+#top-bar .htgnyt {
+  gap: 0.5rem;
+}
+#top-bar .htgnyt img {
+  height: 75%;
+}
+#top-bar .htgnyt h1 {
+  font-family: "aboreto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+#top-bar .nav {
+  user-select: none;
+  gap: 1.5rem;
+  flex-grow: 2;
+}
+#top-bar .nav > * {
+  font-family: "barlow-semi-condensed", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: normal;
+}
+#top-bar .nav > * i {
+  font-size: 0.9em;
+  margin-right: 0.4em;
+}

@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Watch sass",
+			"type": "shell",
+			"command": "npx sass --watch static/css/source:static/css --no-source-map",
+			"isBackground": true
+		}, {
+			"label": "Stop watching sass",
+			"command": "${input:terminate}",
+		}
+	],
+  "inputs": [
+    {
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "Watch sass"
+    }
+  ]
+}

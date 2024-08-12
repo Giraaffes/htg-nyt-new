@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+	<body>
+		<div><div><div id="test"></div></div></div>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script>
+			$("#test").load("/docs/1gwNuXBr_frkIPED8rife7dSt7d1A6bu2xZ-53VzyltA");
+
+			function reparentChildren($from, $to) {
+				(new MutationObserver(mutations => 
+					mutations.forEach(m => $to.append(m.addedNodes))
+				)).observe($from[0], {childList: true});
+			}
+
+			reparentChildren($("body"), $("#test"))
+		</script>
+	</body>
+</html>

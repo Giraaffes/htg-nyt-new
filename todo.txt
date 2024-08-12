@@ -1,0 +1,5 @@
+
+[ ] Hmm anyone could just connect to the database
+[ ] Way for everyone to set announcement
+[ ] Display tags on article page
+[ ] Dino graphic change

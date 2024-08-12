@@ -1,0 +1,87 @@
+$bgr-1: #6a8b83;
+$bgr-2: #466e64;
+
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%; height: 100%; margin: 0;
+
+	font-family: "Aboreto";
+	color: white;
+}
+
+a:hover {
+	cursor: pointer;
+	color: inherit; 
+	text-decoration: none;
+
+	border-bottom: 1px white solid;
+}
+
+
+@mixin text-large-1 {
+	font-family: "aboreto", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+@mixin text-large-2 {
+	font-size: 1.1rem;
+	font-weight: 400;
+}
+
+@mixin text-std-1 {
+	font-family: "barlow-semi-condensed", sans-serif;
+	font-size: 1.1rem;
+	font-weight: 400;
+	font-style: normal;
+}
+
+@mixin spread-flex {
+	display: flex;
+	align-items: center;
+
+	> * {
+		flex: 1;
+		height: 100%;
+
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+
+		justify-content: center;
+		&:first-child { justify-content: left; }
+		&:last-child { justify-content: right; }
+	}
+}
+
+
+#top-bar {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 4.5rem;
+
+	background-color: $bgr-2;
+
+	padding: 0.5rem 1rem;
+	@include spread-flex;
+
+	.htgnyt {
+		gap: 0.5rem;
+		img { height: 75%; }
+		h1 { @include text-large-1; }
+	}
+
+	.nav {
+		user-select: none;
+		gap: 1.5rem;
+		flex-grow: 2;
+		> * { 
+			@include text-std-1;
+			i { font-size: 0.9em; margin-right: 0.4em; }
+		}
+	}
+}
