@@ -73,6 +73,7 @@ class ProxyRoute extends Route {
 		delete req.headers["host"];
 		delete req.headers["content-length"];
 
+		// uhh guess i gotta be careful (https://github.com/advisories/GHSA-8hc4-vh64-cxmj)
 		let proxyUrl = (typeof this.proxyUrl == "function") ? this.proxyUrl(req) : this.proxyUrl;
 		let reqData = this.preHandler ? this.preHandler(req, res, next) : req;
 		let proxyRes = await axios({

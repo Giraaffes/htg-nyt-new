@@ -1,0 +1,47 @@
+<%_
+const footerLines = 5;
+const redaktionen = [
+	"Andreas Skytte Hjorth Hansen", 
+	"Caia Hæe Heiberg", 
+	"Frey Sommer", 
+	"Marcus Færk Henriksen", 
+	"Marie Ellitsgaard Larsen", 
+	"Marius Buch Holtze", 
+	"Rebecca Eleonora Johannessen Fels",
+	"Rosalina Blinkenberg Brahms", 
+	"Vincent Fuglsang-Sørensen"
+];
+_%>
+<link rel="stylesheet" href="/static/css/footer.css">
+<footer id="footer">
+	<div style="flex: 2">
+		<img src="/static/img/htg_logo.png" style="scale: 90%;" class="_keep-ar-h">
+		<div>
+			<h1>Høje-Taastrup Gymnasium</h1>
+			<p>Frøgård Allé 2</p>
+			<p>2630 Taastrup</p>
+		</div>
+		&nbsp;
+		<img src="https://www.htgnyt.dk/images/app/footerLogos/Logo5.png" style="scale: 120%;" class="_keep-ar-h">
+		<div>
+			<h1>Foreningen INSPIRATORIUM</h1>
+			<p>Center for Sundhed & Samfund, Bygning 16</p>
+			<p>Københavns Universitet</p>
+			<p>Øster Farigmagsgade 5</p>
+			<p>1353 København K</p>
+		</div>
+	</div>
+	<div>
+		<% for (let i = 0; i < redaktionen.length; i += footerLines) { %>
+			<div>
+				<h1><%- i == 0 ? "Redaktionen" : "&nbsp;" %></h1>
+				<% for (let j = 0; j < footerLines; j++) { %>
+					<p><%- redaktionen[i + j] || "&nbsp;" %></p>
+				<% } %>
+			</div>
+		<% } %>
+	</div>
+	<div>
+		<h1>Og så står der noget andet her i guess</h1>
+	</div>
+</footer>

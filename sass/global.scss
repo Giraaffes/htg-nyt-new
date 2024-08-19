@@ -1,0 +1,54 @@
+// (_) General
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+html, body {
+	width: 100%; height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+// (_) Elements
+br {
+	display: block;
+}
+
+nav a, p a {
+	box-sizing: content-box;
+	text-decoration: none;
+
+	&:hover {
+		cursor: pointer;
+		border-top: 1px transparent solid;
+		border-bottom: 1px white solid;
+	}
+}
+
+button {
+	border: none;
+	color: inherit;
+	background: none;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+span {
+	display: block;
+}
+
+img {
+	display: block;
+	min-height: 0;
+	min-width: 0;
+	flex: none;
+}

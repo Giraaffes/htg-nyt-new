@@ -3,16 +3,44 @@ import { promisify } from "util";
 
 import "express-async-errors";
 import express from "express";
-const server = express();
-
-server.set("view engine", "ejs");
-server.set("views", "./");
+import beautify from "js-beautify";
 
 import * as database from "./database.js";
 import config from "./config.json" assert {type: "json"};
 
+const server = express();
+server.set("view engine", "ejs");
+server.set("views", "./pages");
 
-// (1) Modules
+
+// Remember 799
+
+// (1) Custom renderer
+// import fs from "fs";
+server.use((req, res, next) => {
+	let render = res.render.bind(res);
+	res.render = function(...args) {
+		let callbackArg = args.find(a => typeof a == "function");
+		if (callbackArg) args.splice(args.indexOf(callbackArg), 1);
+		render(...args, (err, html) => {
+			if (!err) {
+				html = beautify.html(html);
+
+				// todo check this again at some point and configure it
+				// fs.writeFileSync("./html1.txt", html);
+				// fs.writeFileSync("./html2.txt", beautify.html(html, config.htmlBeautifier));
+			}
+			if (callbackArg) {
+				callbackArg(err, html);
+			} else {
+				if (err) { next(err); } else { res.send(html); }
+			}
+		});
+	};
+	next();
+});
+
+// (2) Modules
 import * as modules from "./modules.js";
 
 await modules.register("editor");
@@ -21,7 +49,7 @@ await modules.register("pages");
 modules.useRoutes(server, database);
 
 
-// (2) GitHub webhook
+// (3) GitHub webhook
 // server.post("/github-push", (req, res) => {
 // 	if (!req.headers["x-github-hook-id"] == config.githubWebhookId) return;
 // 	res.status(200).end();
@@ -33,14 +61,14 @@ modules.useRoutes(server, database);
 // });
 
 
-// (3) Static files
+// (4) Static files
 server.use("/static", express.static("static", {
 	extensions: ["html"],
 	fallthrough: false
 }));
 
 
-// (4) 404 and error handling
+// (5) 404 and error handling
 server.use((req, res, next) => {
 	next(Object.assign(new Error(), {status: 404}))
 });
@@ -57,7 +85,7 @@ server.use((err, req, res, next) => {
 });
 
 
-// (5) Main
+// (6) Main
 const dbOptions = process.env.LOCAL ? config.dbRemoteOptions : config.dbOptions;
 await database.connect(dbOptions);
 console.log("Database connected");

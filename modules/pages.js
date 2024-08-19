@@ -1,18 +1,18 @@
 import { Module } from "../modules.js";
 export const module = new Module();
 
-import * as fs from "fs";
+
+const pages = {
+	"/": "home",
+	"/page": "category-list"
+};
 
 
-module.route("GET /", (req, res, next) => {
-	res.render("./pages/front-page.ejs");
-});
-
-module.route("GET /*", (req, res, next) => {
-	let filePath = `./pages${req.path}.ejs`;
-	if (fs.existsSync(filePath)) {
-		res.render(filePath);
-	} else {
-		next();
-	}
-});
+import fs from "fs";
+for (let [ path, page ] of Object.entries(pages)) {
+	module.route({method: "GET", path}, (req, res, next) => {
+		res.render(page, /*(err, html) => {
+			fs.writeFileSync("./html.txt", html);
+		}*/);
+	});
+}

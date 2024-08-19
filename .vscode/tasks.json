@@ -4,19 +4,37 @@
 		{
 			"label": "Watch sass",
 			"type": "shell",
-			"command": "npx sass --watch static/css/source:static/css --no-source-map",
-			"isBackground": true
-		}, {
-			"label": "Stop watching sass",
-			"command": "${input:terminate}",
+			"command": "npx sass --watch sass:static/css --embed-source-map --silence-deprecation=mixed-decls",
+			"isBackground": true,
+			"problemMatcher": {
+        "pattern": {"regexp": ""},
+        "background": {
+					"activeOnStart": true,
+					"beginsPattern": "why do i even need a begin pattern? i don't understand this lol",
+					"endsPattern": "^Sass is watching for changes\\."
+        }
+			}
+		}, 
+		{
+			"label": "Open live server",
+			"command": "${command:extension.liveServer.goOnline}",
+		}, 
+		{
+			"label": "Debug pre-launch",
+			"dependsOrder": "sequence",
+			"dependsOn": ["Watch sass", "Open live server"]
 		}
+		// {
+		// 	"label": "Stop watching sass",
+		// 	"command": "${input:terminate}",
+		// }
 	],
-  "inputs": [
-    {
-      "id": "terminate",
-      "type": "command",
-      "command": "workbench.action.tasks.terminate",
-      "args": "Watch sass"
-    }
-  ]
+  // "inputs": [
+  //   {
+  //     "id": "terminate_sass",
+  //     "type": "command",
+  //     "command": "workbench.action.tasks.terminate",
+  //     "args": "Watch sass"
+  //   }
+  // ]
 }

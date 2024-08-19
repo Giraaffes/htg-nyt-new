@@ -1,0 +1,28 @@
+<%_
+const categories = [
+			["Forside", "home", 0.95, "/"], 
+			["Nyt på HTG", "newspaper", 1, "/page"], 
+			["Sjov og ballede", "face-laugh", 1, "/page"], 
+			["Spændende emner", "graduation-cap", 0.95, "/page"], 
+			["Aktiviteter", "calendar-alt", 0.95, "/page"]
+		];
+_%>
+<link rel="stylesheet" href="/static/css/top-bar.css">
+<header id="top-bar">
+	<div class="htgnyt">
+		<img src="/static/img/htg_logo_new.png" draggable="false">
+		<h1>HTG-NYT</h1>
+	</div>
+	<nav class="nav">
+		<% for (let [ label, icon, iconScale, path ] of categories) { %>
+			<a href="<%= path ? path : "/"%>">
+				<i class="fa-solid fa-<%= icon %>" style="scale: <%= iconScale %>"></i>
+				<%= label %>
+			</a>
+		<% } %>
+	</nav>
+	<div class="menu">
+		<button class="fa-solid fa-bars"></button>
+	</div>
+</header>
+<div id="top-bar-space"></div>

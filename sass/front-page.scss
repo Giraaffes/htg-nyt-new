@@ -1,0 +1,110 @@
+@use 'sass:color';
+
+@use "partials/common" as *;
+
+
+$alpha-headers: 0.85;
+$alpha-article-1: 1;
+$alpha-article-2: 0.75;
+$alpha-article-3: 0.55;
+
+
+#content {
+	flex: 1;
+	padding: 2.5rem 0;
+
+	&.wide { width: 80rem; }
+	&.thin { width: 50rem; }
+
+	> * { margin-bottom: 2.5rem; }
+	h1 {
+		margin-bottom: 1rem;
+
+		@include font-std-3;
+		color: color.change(black, $alpha: $alpha-headers);
+	}
+
+	.multi {
+		width: 100%;
+		
+		@include spread-flex($split-equally: true);
+		gap: 1.5rem;
+	
+		> hr { @include flex-hr($type: row, $style: 2px solid $gray-2); }
+	}
+
+	.article-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.article {
+		&.small-feature { height: 10rem; }
+		&.big-feature { height: 14rem; }
+		&.listed { height: 10rem; }
+	
+		@include box-shadow($alpha-shadow, 4px);
+		border-radius: 1rem;
+		text-decoration: none;
+		&:hover {
+			cursor: pointer;
+			.rubrik { text-decoration: underline};
+		}
+	
+		padding: 1rem;
+		display: flex;
+		gap: 1rem;
+	
+		&.small-feature .thumbnail {
+			width: 30%;
+			border-radius: 50%;
+			align-self: center;
+		}
+		&.big-feature .thumbnail, &.listed .thumbnail {
+			height: 100%;
+			border-radius: 0.5rem;
+		}
+	
+		.info {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+		&.small-feature .info, &.big-feature .info {
+			justify-content: center;
+		}
+		
+		.type {
+			@include font-article;
+			// font-size: 1.1rem;
+			color: color.change(black, $alpha: $alpha-article-3);
+		}
+		.rubrik { 
+			@include font-article-big;
+			color: color.change(black, $alpha: $alpha-article-1);
+		}
+		.underrubrik { 
+			@include font-article;
+			color: color.change(black, $alpha: $alpha-article-2);
+		}
+		&.small-feature .skribent { display: none; }
+		&.big-feature .skribent, &.listed .skribent {
+			@include position-relatively;
+			bottom: 0;
+			right: 0;
+	
+			@include font-article-small;
+			// font-size: 1rem;
+			color: color.change(black, $alpha: $alpha-article-3);
+	
+			img {
+				display: inline-block;
+				vertical-align: middle;
+				height: 1.4rem;
+				border-radius: calc(1.4rem / 2);
+			}
+		}
+	}
+}
+

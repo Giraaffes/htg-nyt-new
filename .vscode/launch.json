@@ -21,8 +21,8 @@
 					"NODE_OPTIONS": "--disable-warning=ExperimentalWarning"
 			},
 
-			"preLaunchTask": "Watch sass",
-			"postDebugTask": "Stop watching sass",
+			"preLaunchTask": "Debug pre-launch",
+			// "postDebugTask": "Stop watching sass",
 
 			"console": "internalConsole",
 			"internalConsoleOptions": "openOnSessionStart"

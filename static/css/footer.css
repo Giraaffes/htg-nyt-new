@@ -1,0 +1,43 @@
+#footer {
+  flex: 0 0 9.5rem;
+  width: 100%;
+  background-color: #999;
+  color: white;
+  display: flex;
+  padding: 1rem 4rem;
+  overflow: hidden;
+}
+#footer > * {
+  flex: 1 0 0%;
+  min-width: 0;
+  min-height: 0;
+}
+#footer > * {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+#footer > *:first-child {
+  justify-content: left;
+}
+#footer > *:last-child {
+  justify-content: right;
+}
+#footer img {
+  height: 100%;
+}
+#footer h1 {
+  font-family: "barlow-semi-condensed", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+#footer p {
+  font-family: "barlow-semi-condensed", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/footer.scss%22,%22../../sass/partials/_common.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;EACC;EACA;EAEA,kBCEQ;EDDR;ECuHA;EDpHA;EACA;;ACsHC;EACC;EACA;EACA;;AAMF;EAEE;EACA;EACA;EAEA;;AACA;EAAgB;;AAChB;EAAe;;ADrIjB;EAAM;;AACN;ECiDA,aAlDU;EAsCV,WAamB;EACnB;EDnD0B;EAAkB;;AAC5C;ECsDA,aAxDU;EAsCV,WAmBmB;EACnB%22,%22file%22:%22footer.css%22%7D */
