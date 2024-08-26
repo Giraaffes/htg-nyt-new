@@ -7,91 +7,32 @@
 		<link rel="stylesheet" href="/static/css/front-page.css">
 	</head>
 	<body>
-		<%- include("partials/top-bar"); %>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+		<%- include("partials/top-bar", {site: "skribent"}); %>
+		
+		<%- include("partials/side-menu"); %>
 
 		<div id="content" class="thin">
 			<h1>Alt nyt på HTG</h1>
 			<div class="article-list">
-				<a class="article listed" href="https://www.google.com/">
-					<div class="info">
-						<h2 class="type">HTG-SAMLING</h2>
-						<h2 class="rubrik">HTG samling den. 15 august</h2>
-						<p class="underrubrik">Skolen gik i gang igen og det skete heldigvis med et smil på læben</p>
-						<span class="skribent">
-							Skrevet af Marius 2s
-							<img src="https://inspir.dk/uploads/user/71526e46-aee8-11ee-815a-91f78ec10b0b/avatar-703e2fe8-b192-11ee-b713-43edb6ac5325.png">
-						</span>
-					</div>
-					<img class="thumbnail" src="https://www.htgnyt.dk/thumbnail/54d1a002-5b0e-11ef-9cf8-75725914f3b2_1.png">
-				</a>
-				<a class="article listed" href="https://www.google.com/">
-					<div class="info">
-						<h2 class="type">INFO</h2>
-						<h2 class="rubrik">Aktiviteter på Høje-Taastrup Gymnasium</h2>
-						<p class="underrubrik">Her kan du få overblik over alle fritidsaktiviteterne på HTG!</p>
-					</div>
-					<img class="thumbnail" src="https://www.htgnyt.dk/thumbnail/b72afe2e-58b1-11ef-9f55-73268bb1da72_2.png">
-				</a>
-				<a class="article listed" href="https://www.google.com/">
-					<div class="info">
-						<h2 class="type">HTG-SAMLING</h2>
-						<h2 class="rubrik">Den allersidste HTG-samling og gudskelov for det</h2>
-						<p class="underrubrik">Året kunne ikke have været endt på en værre måde end det gjorde til denne sidste HTG-samling</p>
-						<span class="skribent">
-							Skrevet af Marius 2s
-							<img src="https://inspir.dk/uploads/user/71526e46-aee8-11ee-815a-91f78ec10b0b/avatar-703e2fe8-b192-11ee-b713-43edb6ac5325.png">
-						</span>
-					</div>
-					<img class="thumbnail" src="https://www.htgnyt.dk/thumbnail/d794a9dc-355a-11ef-bfbb-35efb3b8b303_0.png">
-				</a>
-				<a class="article listed" href="https://www.google.com/">
-					<div class="info">
-						<h2 class="type">HTG-SAMLING</h2>
-						<h2 class="rubrik">Skoleårets allersidste allerbedste HTG-samling</h2>
-						<p class="underrubrik">En supergod afslutning på året, nemlig en hurtig samling fyldt med sommerferie-stemning!</p>
-						<span class="skribent">
-							Skrevet af Marcus 3s
-							<img src="https://inspir.dk/uploads/user/ac73b084-aee8-11ee-b584-47e7caf7e8f5/avatar-a5df9ed0-b6e6-11ee-bc4a-d5f149b13adb.png">
-						</span>
-					</div>
-					<img class="thumbnail" src="https://www.htgnyt.dk/thumbnail/bfd0c00c-3559-11ef-b79b-35b65eb9e9ff_1.png">
-				</a>
-				<a class="article listed" href="https://www.google.com/">
-					<div class="info">
-						<h2 class="type">INTERVIEW</h2>
-						<h2 class="rubrik">Interview med Borgmesteren</h2>
-						<p class="underrubrik">Læs skolebladets interview med borgmester af Høje Taastrup Kommune Michael Ziegler</p>
-						<span class="skribent">
-							Skrevet af Marius 2s
-							<img src="https://inspir.dk/uploads/user/71526e46-aee8-11ee-815a-91f78ec10b0b/avatar-703e2fe8-b192-11ee-b713-43edb6ac5325.png">
-						</span>
-					</div>
-					<img class="thumbnail" src="https://www.htgnyt.dk/thumbnail/70957c72-2a68-11ef-8939-9feea25491ec_0.png">
-				</a>
-				<a class="article listed" href="https://www.google.com/">
-					<div class="info">
-						<h2 class="type">REJSE</h2>
-						<h2 class="rubrik">Reunert i Lübeck dag 2-3</h2>
-						<p class="underrubrik">LFå fortsættelsen på Reunert og 1g'ernes eventyr i Lübeck</p>
-						<span class="skribent">
-							Skrevet af Marius 2s
-							<img src="https://inspir.dk/uploads/user/71526e46-aee8-11ee-815a-91f78ec10b0b/avatar-703e2fe8-b192-11ee-b713-43edb6ac5325.png">
-						</span>
-					</div>
-					<img class="thumbnail" src="https://www.htgnyt.dk/thumbnail/fc1be41a-1df3-11ef-ba27-1d087725378a_1.png">
-				</a>
-				<a class="article listed" href="https://www.google.com/">
-					<div class="info">
-						<h2 class="type">BEGIVENHED</h2>
-						<h2 class="rubrik">Da der var forårskoncert på HTG</h2>
-						<p class="underrubrik">Læs om forårskoncerten og få samtidig med vores bedømmelse af den</p>
-						<span class="skribent">
-							Skrevet af Marius 2s
-							<img src="https://inspir.dk/uploads/user/71526e46-aee8-11ee-815a-91f78ec10b0b/avatar-703e2fe8-b192-11ee-b713-43edb6ac5325.png">
-						</span>
-					</div>
-					<img class="thumbnail" src="https://www.htgnyt.dk/thumbnail/30ab2774-1abe-11ef-88da-155908fb8392_1.png">
-				</a>
+				<% for (let article of articles) { -%>
+					<a class="article listed" href="https://www.google.com/">
+						<img class="thumbnail" src="<%= article.thumbnail %>">
+						<div class="info">
+							<h2 class="type"><%= article.tags[0] %></h2>
+							<h2 class="rubrik"><%= article.headline %></h2>
+							<p class="underrubrik"><%= article.subheadline %></p>
+							<% if (article.author) { -%>
+								<span class="skribent">
+									<% let authorNames = article.author.split(" "); -%>
+									<%= authorNames[0] + " " + authorNames.slice(1, -1).map(n => n[0].toUpperCase() + ".").join(" ") + " " + authorNames[authorNames.length - 1] %>
+									<img src="https://inspir.dk/uploads/user/71526e46-aee8-11ee-815a-91f78ec10b0b/avatar-703e2fe8-b192-11ee-b713-43edb6ac5325.png">
+								</span>
+							<% } -%>
+						</div>
+					</a>
+				<% } -%>
 			</div>
 		</div>
 

@@ -19,6 +19,6 @@
 	"htmlBeautifier": {
 		"indent_with_tabs": true,
 		"indent_inner_html": true,
-		"extra_liners": ""
+		"extra_liners": []
 	}
 }

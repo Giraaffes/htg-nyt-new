@@ -3,3 +3,5 @@
 [ ] Way for everyone to set announcement
 [ ] Display tags on article page
 [ ] Dino graphic change
+[ ] Smooth page navigation (why does it do that weird thing)
+[ ] Quick way to do fa-icons

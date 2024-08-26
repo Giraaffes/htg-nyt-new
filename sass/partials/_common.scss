@@ -2,13 +2,18 @@
 @use 'sass:list';
 @use 'sass:selector';
 @use 'sass:string';
+@use 'sass:math';
 
-$bgr-1: #6a8b83;
-$bgr-2: #466e64;
+// todo fix these variable names
+
+$top-bar-height: 4.5rem;
 
 $gray-1: #999;
-$gray-2: #e0e0e0;
+$gray-2: #e6e6e6;
+$gray-3: #181818;
+$gray-4: #444;
 
+$alpha-nav: 0.8;
 $alpha-shadow: 0.125;
 
 $font-std: "barlow-semi-condensed", sans-serif;
@@ -101,6 +106,12 @@ $font-article: "lora", serif;
 	box-shadow: 0 0 calc($size * 2) $size color.change(black, $alpha: $alpha);
 }
 
+// todo multiple directions
+// @mixin directional-shadow($alpha, $x, $y) {
+// 	$size: max(math.abs($x), math.abs($y));
+// 	box-shadow: $x $y calc($size * 2) calc($size * -1.25) color.change(black, $alpha: $alpha);
+// }
+
 // @mixin hover-pop($scale: 120%) {
 // 	&:hover {
 // 		scale: $scale;
@@ -149,7 +160,7 @@ $font-article: "lora", serif;
 	}
 }
 
-@mixin flex-hr($type, $style, $margin: 1rem) {
+@mixin flex-hr($type, $style, $margin: 0) {
 	flex: 0 0 0; 
 	align-self: stretch;
 

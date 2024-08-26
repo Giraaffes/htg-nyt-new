@@ -6,7 +6,6 @@
 $alpha-headers: 0.85;
 $alpha-article-1: 1;
 $alpha-article-2: 0.75;
-$alpha-article-3: 0.55;
 
 
 #content {
@@ -30,22 +29,33 @@ $alpha-article-3: 0.55;
 		@include spread-flex($split-equally: true);
 		gap: 1.5rem;
 	
-		> hr { @include flex-hr($type: row, $style: 2px solid $gray-2); }
+		> hr { 
+			@include flex-hr($type: row, $style: 2px solid $gray-2, $margin: 1rem);
+		}
 	}
 
 	.article-list {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+
+		@include box-shadow($alpha-shadow, 4px);
+		border-radius: 1rem;
+
+		.article:nth-child(even) {
+			background-color: #f2f2f2;
+		}
 	}
 
 	.article {
-		&.small-feature { height: 10rem; }
-		&.big-feature { height: 14rem; }
+		&.feature.small { height: 10rem; }
+		&.feature.big { height: 14rem; }
 		&.listed { height: 10rem; }
-	
-		@include box-shadow($alpha-shadow, 4px);
-		border-radius: 1rem;
+
+		&.feature {
+			@include box-shadow($alpha-shadow, 4px);
+			border-radius: 1rem;
+		}
+
 		text-decoration: none;
 		&:hover {
 			cursor: pointer;
@@ -56,12 +66,12 @@ $alpha-article-3: 0.55;
 		display: flex;
 		gap: 1rem;
 	
-		&.small-feature .thumbnail {
+		&.feature.small .thumbnail {
 			width: 30%;
 			border-radius: 50%;
 			align-self: center;
 		}
-		&.big-feature .thumbnail, &.listed .thumbnail {
+		&.feature.big .thumbnail, &.listed .thumbnail {
 			height: 100%;
 			border-radius: 0.5rem;
 		}
@@ -71,14 +81,16 @@ $alpha-article-3: 0.55;
 			display: flex;
 			flex-direction: column;
 		}
-		&.small-feature .info, &.big-feature .info {
+		&.feature .info {
 			justify-content: center;
 		}
 		
 		.type {
 			@include font-article;
-			// font-size: 1.1rem;
-			color: color.change(black, $alpha: $alpha-article-3);
+			font-family: "aboreto", sans-serif;
+			font-size: 1.1rem; // todo set this as font size variable
+			font-weight: 300;
+			color: color.change(black, $alpha: $alpha-article-2);
 		}
 		.rubrik { 
 			@include font-article-big;
@@ -88,15 +100,15 @@ $alpha-article-3: 0.55;
 			@include font-article;
 			color: color.change(black, $alpha: $alpha-article-2);
 		}
-		&.small-feature .skribent { display: none; }
-		&.big-feature .skribent, &.listed .skribent {
+
+		&.feature.small .skribent { display: none; }
+		&.feature.big .skribent, &.listed .skribent {
 			@include position-relatively;
 			bottom: 0;
 			right: 0;
 	
 			@include font-article-small;
-			// font-size: 1rem;
-			color: color.change(black, $alpha: $alpha-article-3);
+			color: color.change(black, $alpha: $alpha-article-2);
 	
 			img {
 				display: inline-block;

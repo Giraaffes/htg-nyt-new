@@ -1,0 +1,23 @@
+<%_
+const navItems = [
+	["Mine artikler", "pencil", 0.8, "/"]
+];
+_%>
+<link rel="stylesheet" href="/static/css/side-menu.css">
+<nav id="side-menu" class="">
+	<button class="close-btn fa-solid fa-xmark"></button>
+	<% for (let i in navItems) { %>
+		<% let [ label, icon, iconScale, path ] = navItems[i]; %>
+		<% if (i > 0) { %> <hr> <% } %>
+		<a href="<%= path ? path : "/"%>">
+			<%= label %>
+			<i class="fa-solid fa-<%= icon %>" style="font-size: <%= iconScale %>em"></i>
+		</a>
+	<% } %>
+</nav>
+
+<script>
+	$("#side-menu .close-btn").on("click", () => {
+		$("#side-menu").removeClass("shown");
+	});
+</script>

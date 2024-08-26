@@ -1,0 +1,45 @@
+            mapRange: (e, t, i, n, o) => ((e = n + (e = (e - t) / (i - t)) * (o - n)) < n && (e = n), e > o && (e = o), e),
+            setSVGSizes() {
+                const e = document.querySelector(".dinosaur--comparison-dino"),
+                    t = parseFloat(document.querySelector(".dinosaur--description").getAttribute("data-dino-length"));
+                let i = 1;
+                const n = t / (e.offsetWidth ? e.offsetWidth / e.offsetHeight : 1.5);
+                let o = "human-look-ahead";
+                i = this.mapRange(n, 0, 5, .5, 1), (n < 1 || t <= 1.5) && (i = this.mapRange(n, 0, 5, .45, 1.3), o = "human-crouching");
+                const s = i + t,
+                    r = 100 / s * t,
+                    a = 100 / s * i,
+                    l = document.querySelector(".dinosaur--comparison-human"),
+                    c = document.querySelector(".dinosaur--comparison-dino");
+                l.innerHTML = '<img alt="human silhouette for scale comparison" src="/etc.clientlibs/nhmwww/clientlibs/clientlib-site/resources/images/svgs/dinodirectory/human/' + o + '.svg"/>', l.style.width = a + "%", c.style.width = r + "%"
+            },
+            init() {
+                document.querySelector(".dinosaur--comparison-human") && this.setSVGSizes()
+            }
+
+
+
+(e, t, i, n, o) => (
+    (e = n + (
+            e = (e - t) / (i - t)
+        ) * (o - n)
+    ) < n && (e = n), e > o && (e = o), e)
+
+e -= t
+e /= (i - t)
+e *= (o - n)
+e += n
+e < n ? e = n
+e > o ? e = o
+
+
+t er bredden i meter
+n er højden i meter
+i = n mappet fra 0-5 til 0,5-1,0
+hvis dinoen er lille (under 1 m høj eller under 1,5 m lang)
+    så er i = n mappet fra 0-5 til 0,45-1,3
+    og så skal mennesket være crouching
+
+r er dino bredde i procent
+a er menneske bredde i procent
+

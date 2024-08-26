@@ -16,6 +16,7 @@ server.set("views", "./pages");
 // Remember 799
 
 // (1) Custom renderer
+// todo suppose i should put this in the pages module
 // import fs from "fs";
 server.use((req, res, next) => {
 	let render = res.render.bind(res);
@@ -24,7 +25,7 @@ server.use((req, res, next) => {
 		if (callbackArg) args.splice(args.indexOf(callbackArg), 1);
 		render(...args, (err, html) => {
 			if (!err) {
-				html = beautify.html(html);
+				html = beautify.html(html, config.htmlBeautifier);
 
 				// todo check this again at some point and configure it
 				// fs.writeFileSync("./html1.txt", html);

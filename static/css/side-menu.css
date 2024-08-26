@@ -1,0 +1,81 @@
+#side-menu {
+  position: fixed;
+  width: 17.5rem;
+  height: 100%;
+  top: 0;
+  right: -17.5rem;
+  transition: right 0.3s ease-out;
+  background-color: #181818;
+  color: white;
+  z-index: 2;
+  padding: 5.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1.25rem;
+}
+#side-menu.shown {
+  right: 0;
+}
+#side-menu .close-btn {
+  position: absolute !important;
+  left: 1.71875rem;
+  top: 1.375rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.75rem;
+}
+#side-menu .close-btn:hover {
+  color: white;
+}
+#side-menu .close-btn::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -0.5rem;
+  left: -0.5rem;
+  padding: 0.5rem;
+}
+#side-menu .close-btn {
+  position: relative;
+}
+
+#side-menu a {
+  font-family: "barlow-semi-condensed", sans-serif;
+  font-size: 1.3rem;
+  height: 1.3rem;
+  line-height: 1.3rem;
+  margin-bottom: -0.325rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+}
+#side-menu a:hover {
+  color: white;
+}
+#side-menu a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -1.25rem;
+  left: -1.25rem;
+  padding: 1.25rem;
+}
+#side-menu a {
+  position: relative;
+}
+
+#side-menu a i {
+  width: 1.5rem;
+  text-align: right;
+}
+#side-menu hr {
+  flex: 0 0 0;
+  align-self: stretch;
+  border: none;
+  border-top: 1px solid #444;
+  margin: 0 0;
+  margin-left: 1rem;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/side-menu.scss%22,%22../../sass/partials/_common.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACC;EACA,OAHiB;EAIjB;EACA;EAEA;EAIA;EAEA,kBCHQ;EDIR;EACA;EAEA;EACA;EACA;EACA;EACA;;AAbA;EACC;;AAcD;EAIC;EACA;EACA,KAJW;EC8FZ;EDtFC,WATW;;ACgGZ;EAAU;;AAIV;EACC;EA3ED;EA6EC;EAAa;EACb;EAAa;EACb,SDjGqB;;ACMX;EACR;;;ADHH;EC8BA,aAlDU;EAsCV,WAamB;EAXlB,QAWkB;EAVlB,aAUkB;EARjB;EASF;EAmDA;;AACA;EAAU;;AAIV;EACC;EA3ED;EA6EC;EAAa;EACb;EAAa;EACb,SD1FqB;;ACDX;EACR;;;ADCF;EAAI;EAAe;;AAGpB;ECsHA;EACA;EAEA;EAKC,YD7HwC;EC8HxC;ED7HA%22,%22file%22:%22side-menu.css%22%7D */

@@ -32,30 +32,36 @@
   flex: 0 0 0;
   align-self: stretch;
   border: none;
-  border-left: 2px solid #e0e0e0;
+  border-left: 2px solid #e6e6e6;
   margin: 1rem 0;
 }
 #content .article-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-}
-#content .article {
   box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.125);
   border-radius: 1rem;
+}
+#content .article-list .article:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#content .article {
   text-decoration: none;
   padding: 1rem;
   display: flex;
   gap: 1rem;
 }
-#content .article.small-feature {
+#content .article.feature.small {
   height: 10rem;
 }
-#content .article.big-feature {
+#content .article.feature.big {
   height: 14rem;
 }
 #content .article.listed {
   height: 10rem;
+}
+#content .article.feature {
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.125);
+  border-radius: 1rem;
 }
 #content .article:hover {
   cursor: pointer;
@@ -63,12 +69,12 @@
 #content .article:hover .rubrik {
   text-decoration: underline;
 }
-#content .article.small-feature .thumbnail {
+#content .article.feature.small .thumbnail {
   width: 30%;
   border-radius: 50%;
   align-self: center;
 }
-#content .article.big-feature .thumbnail, #content .article.listed .thumbnail {
+#content .article.feature.big .thumbnail, #content .article.listed .thumbnail {
   height: 100%;
   border-radius: 0.5rem;
 }
@@ -77,14 +83,17 @@
   display: flex;
   flex-direction: column;
 }
-#content .article.small-feature .info, #content .article.big-feature .info {
+#content .article.feature .info {
   justify-content: center;
 }
 #content .article .type {
   font-family: "lora", serif;
   font-size: 1.1rem;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.55);
+  font-family: "aboreto", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.75);
 }
 #content .article .rubrik {
   font-family: "aboreto", sans-serif;
@@ -98,19 +107,19 @@
   font-weight: 400;
   color: rgba(0, 0, 0, 0.75);
 }
-#content .article.small-feature .skribent {
+#content .article.feature.small .skribent {
   display: none;
 }
-#content .article.big-feature .skribent, #content .article.listed .skribent {
+#content .article.feature.big .skribent, #content .article.listed .skribent {
   position: absolute;
   bottom: 0;
   right: 0;
   font-family: "lora", serif;
   font-size: 0.95rem;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.55);
+  color: rgba(0, 0, 0, 0.75);
 }
-#content .article.big-feature :has(> .skribent), #content .article.big-feature:has(> .skribent) {
+#content .article.feature.big :has(> .skribent), #content .article.feature.big:has(> .skribent) {
   position: relative;
 }
 
@@ -118,11 +127,11 @@
   position: relative;
 }
 
-#content .article.big-feature .skribent img, #content .article.listed .skribent img {
+#content .article.feature.big .skribent img, #content .article.listed .skribent img {
   display: inline-block;
   vertical-align: middle;
   height: 1.4rem;
   border-radius: 0.7rem;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/front-page.scss%22,%22../../sass/partials/_common.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAWA;EACC;EACA;;AAEA;EAAS;;AACT;EAAS;;AAET;EAAM;;AACN;EACC;ECuDD,aA9DU;EAsCV,WAyBmB;EACnB;EDtDC;;AAGD;EACC;ECmGD;EDhGC;;ACmGA;EACC;EACA;EACA;;ADpGD;ECwHD;EACA;EAEA;EAEC,aD7H4C;EC8H5C;;AD3HD;EACC;EACA;EACA;;AAGD;EC2DA;EDrDC;EACA;EAMA;EACA;EACA;;AAdA;EAAkB;;AAClB;EAAgB;;AAChB;EAAW;;AAKX;EACC;;AACA;EAAU;;AAOX;EACC;EACA;EACA;;AAED;EACC;EACA;;AAGD;EACC;EACA;EACA;;AAED;EACC;;AAGD;ECUD,aAxEc;EAoCd,WAqCmB;EACnB;EDTE;;AAED;ECDD,aAnEa;EAqCb,WA+BmB;EACnB;EDCE;;AAED;ECCD,aAxEc;EAoCd,WAqCmB;EACnB;EDDE;;AAED;EAA4B;;AAC5B;EC5CD;ED8CE;EACA;ECDF,aA9Ec;EAoCd,WA2CmB;EACnB;EDGE;;ACzDS;EACR;;;AADQ;EACR;;;AD0DD;EACC;EACA;EACA;EACA%22,%22file%22:%22front-page.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/front-page.scss%22,%22../../sass/partials/_common.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAUA;EACC;EACA;;AAEA;EAAS;;AACT;EAAS;;AAET;EAAM;;AACN;EACC;EC6DD,aA9DU;EAsCV,WAyBmB;EACnB;ED5DC;;AAGD;EACC;EC+GD;ED5GC;;AC+GA;EACC;EACA;EACA;;ADhHD;ECoID;EACA;EAEA;EAEC,aDxIsC;ECyItC;;ADrID;EACC;EACA;ECmED;EDhEC;;AAEA;EACC;;AAIF;EAUC;EAMA;EACA;EACA;;AAjBA;EAAkB;;AAClB;EAAgB;;AAChB;EAAW;;AAEX;ECoDD;EDlDE;;AAID;EACC;;AACA;EAAU;;AAOX;EACC;EACA;EACA;;AAED;EACC;EACA;;AAGD;EACC;EACA;EACA;;AAED;EACC;;AAGD;ECKD,aAxEc;EAoCd,WAqCmB;EACnB;EDLE;EACA;EACA;EACA;;AAED;ECRD,aAnEa;EAqCb,WA+BmB;EACnB;EDQE;;AAED;ECND,aAxEc;EAoCd,WAqCmB;EACnB;EDME;;AAGD;EAA4B;;AAC5B;ECpDD;EDsDE;EACA;ECTF,aA9Ec;EAoCd,WA2CmB;EACnB;EDUE;;AChES;EACR;;;AADQ;EACR;;;ADiED;EACC;EACA;EACA;EACA%22,%22file%22:%22front-page.css%22%7D */

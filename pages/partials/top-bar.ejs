@@ -1,28 +1,50 @@
 <%_
+// todo put colors in css?
+// todo want icons or no?
+const sites = {
+	"frontPage": ["", "", 1, "#466e64"], 
+	"skribent": ["SKRIBENT", "", 0.8, "#145a73"], 
+};
 const categories = [
-			["Forside", "home", 0.95, "/"], 
-			["Nyt på HTG", "newspaper", 1, "/page"], 
-			["Sjov og ballede", "face-laugh", 1, "/page"], 
-			["Spændende emner", "graduation-cap", 0.95, "/page"], 
-			["Aktiviteter", "calendar-alt", 0.95, "/page"]
-		];
+	["Forside", "home", 0.875, "/"], 
+	["Nyt på HTG", "newspaper", 0.9, "/page"], 
+	["Sjov og ballede", "face-laugh", 0.9, "/page"], 
+	["Spændende emner", "graduation-cap", 0.875, "/page"], 
+	["Aktiviteter", "calendar-alt", 0.875, "/page"]
+];
+
+let [ siteName, siteIcon, siteIconSize, siteColor ] = sites[site];
 _%>
 <link rel="stylesheet" href="/static/css/top-bar.css">
-<header id="top-bar">
+<header id="top-bar" style="--color: <%= siteColor %>;">
 	<div class="htgnyt">
 		<img src="/static/img/htg_logo_new.png" draggable="false">
-		<h1>HTG-NYT</h1>
+		<div class="text">
+			<h1>HTG-NYT</h1>
+			<% if (site != "home") { -%>
+				<h2>
+					<%= siteName %>
+					<i class="fa-solid fa-<%= siteIcon %>" style="font-size: <%= siteIconSize %>em;"></i>
+				</h2>
+			<% } -%>
+		</div>
 	</div>
 	<nav class="nav">
-		<% for (let [ label, icon, iconScale, path ] of categories) { %>
+		<% for (let [ label, icon, iconSize, path ] of categories) { -%>
 			<a href="<%= path ? path : "/"%>">
-				<i class="fa-solid fa-<%= icon %>" style="scale: <%= iconScale %>"></i>
+				<i class="fa-solid fa-<%= icon %>" style="font-size: <%= iconSize %>em;"></i>
 				<%= label %>
 			</a>
-		<% } %>
+		<% } -%>
 	</nav>
-	<div class="menu">
-		<button class="fa-solid fa-bars"></button>
+	<div>
+		<button class="menu-btn fa-solid fa-bars"></button>
 	</div>
 </header>
 <div id="top-bar-space"></div>
+
+<script>
+	$("#top-bar .menu-btn").on("click", () => {
+		$("#side-menu").addClass("shown");
+	});
+</script>

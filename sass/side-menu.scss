@@ -1,0 +1,50 @@
+@use "partials/common" as *;
+
+$side-menu-width: 17.5rem;
+#side-menu {
+	position: fixed;
+	width: $side-menu-width;
+	height: 100%;
+	top: 0;
+	
+	right: -$side-menu-width;
+	&.shown {
+		right: 0;
+	}
+	transition: right 0.3s ease-out;
+	
+	background-color: $gray-3;
+	color: white;
+	z-index: 2;
+	
+	padding: calc($top-bar-height + 1rem) 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	gap: 1.25rem;
+
+	.close-btn {
+		$btn-size: 1.75rem;
+		$top-dist: calc($top-bar-height / 2.0 - $btn-size / 2.0);
+		
+		position: absolute !important; // to override expand-area's position-relatively include
+		left: calc($top-dist * 1.25);
+		top: $top-dist;
+
+		@include light-up(white, $alpha-nav, 1);
+		@include expand-area(0.5rem);
+		font-size: $btn-size;
+	}
+
+	a {
+		@include font-std-1($center-line: true);
+		@include light-up(white, $alpha-nav, 1);
+		@include expand-area(1.25rem);
+		i { width: 1.5rem; text-align: right; }
+	}
+	
+	hr { 
+		@include flex-hr($type: column, $style: 1px solid $gray-4);
+		margin-left: 1rem;
+	}
+}

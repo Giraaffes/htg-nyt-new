@@ -17,8 +17,8 @@
 				"--watch", "${fileWorkspaceFolder}"
 			],
 			"env": {
-					"LOCAL": "yes",
-					"NODE_OPTIONS": "--disable-warning=ExperimentalWarning"
+				"LOCAL": "yes",
+				"NODE_OPTIONS": "--disable-warning=ExperimentalWarning"
 			},
 
 			"preLaunchTask": "Debug pre-launch",
