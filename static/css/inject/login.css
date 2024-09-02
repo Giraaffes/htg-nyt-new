@@ -1,0 +1,20 @@
+html {
+  overflow: hidden;
+  background: white;
+}
+
+* {
+  visibility: hidden;
+}
+
+#m_Content_panel > section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 5px;
+}
+#m_Content_panel > section, #m_Content_panel > section * {
+  visibility: visible !important;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../../sass/inject/login.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACC;EACA;;;AAGD;EACC;;;AAGD;EACC;EACA;EACA;EACA;;AAGA;EACC%22,%22file%22:%22login.css%22%7D */

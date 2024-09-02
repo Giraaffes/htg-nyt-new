@@ -1,0 +1,51 @@
+// todo content flex
+@mixin content-flex($gap) {
+	display: flex;
+	flex-direction: column;
+	gap: $gap;
+}
+
+@mixin center-flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin spread-flex($split-equally: false, $spread-children: false) {
+	display: flex;
+
+	@if $split-equally {
+		> * { 
+			flex: 1 0 0%;
+			min-width: 0;
+			min-height: 0;
+		}
+	} @else {
+		justify-content: space-between;
+	}
+
+	> * {
+		@if $spread-children {
+			display: flex;
+			align-items: center;
+
+			justify-content: center;
+			&:first-child { justify-content: left; }
+			&:last-child { justify-content: right; }
+		}
+	}
+}
+
+@mixin flex-hr($type, $style, $margin: 0) {
+	flex: 0 0 0; 
+	align-self: stretch;
+
+	border: none;
+	@if $type == row {
+		border-left: $style;
+		margin: $margin 0;
+	} @else if $type == column {
+		border-top: $style;
+		margin: 0 $margin;
+	}
+}

@@ -1,17 +1,19 @@
-@use "partials/common" as *;
+@use "partials/all" as *;
 
 #footer {
 	flex: 0 0 9.5rem;
 	width: 100%;
 
-	background-color: $gray-1;
+	background-color: $footer-bgr;
 	color: white;
 
 	@include spread-flex($split-equally: true, $spread-children: true);
 	padding: 1rem 4rem;
 	overflow: hidden;
 
+	> * { gap: 1rem; }
+
 	img { height: 100%; }
-	h1 { @include font-std-1; font-weight: 500; margin-bottom: 0.3rem; }
-	p { @include font-std-2; }
+	h1 { @include font($standard-font, medium); font-weight: 500; margin-bottom: 0.3rem; }
+	p { @include font($standard-font, small); }
 }

@@ -1,27 +1,56 @@
-@use 'sass:color';
-
-@use "partials/common" as *;
-
-
-$alpha-headers: 0.85;
-$alpha-article-1: 1;
-$alpha-article-2: 0.75;
+@use "partials/all" as *;
 
 
 #content {
+	margin-top: $top-bar-height;
 	flex: 1;
 	padding: 2.5rem 0;
 
 	&.wide { width: 80rem; }
 	&.thin { width: 50rem; }
 
-	> * { margin-bottom: 2.5rem; }
-	h1 {
-		margin-bottom: 1rem;
+	@include content-flex(2.5rem);
+	
 
-		@include font-std-3;
-		color: color.change(black, $alpha: $alpha-headers);
+	section {
+		@include content-flex(1rem);
 	}
+
+	.header {
+		@include content-flex(0.5rem);
+	}
+
+	h1 {
+		@include font($standard-font, large, $center-line: false);
+		color: alpha(black, $header-alpha);
+	}
+
+	.search {	
+		height: 2rem;
+
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+
+		span {
+			@include font($standard-font, medium);
+		}
+
+		input {
+			height: 100%;
+			width: 15rem;
+			margin: 0.1rem 0;
+
+			@include font($standard-font, small);
+			padding: 0 0.5rem;
+			border: none;
+			border-radius: 0.5rem;
+
+			background-color: $general-bgr-2;
+			&:focus { background-color: white; }
+		}
+	}
+
 
 	.multi {
 		width: 100%;
@@ -30,7 +59,7 @@ $alpha-article-2: 0.75;
 		gap: 1.5rem;
 	
 		> hr { 
-			@include flex-hr($type: row, $style: 2px solid $gray-2, $margin: 1rem);
+			@include flex-hr($type: row, $style: 2px solid alpha(black, $hr-alpha), $margin: 1rem);
 		}
 	}
 
@@ -38,21 +67,26 @@ $alpha-article-2: 0.75;
 		display: flex;
 		flex-direction: column;
 
-		@include box-shadow($alpha-shadow, 4px);
+		@include box-shadow($shadow-alpha, 4px);
 		border-radius: 1rem;
 
-		.article:nth-child(even) {
-			background-color: #f2f2f2;
+		.article:nth-child(even of :not(.hidden)) {
+			background-color: $general-bgr-1;
 		}
 	}
 
+	
 	.article {
+		&.hidden {
+			display: none;
+		}
+
 		&.feature.small { height: 10rem; }
 		&.feature.big { height: 14rem; }
 		&.listed { height: 10rem; }
 
 		&.feature {
-			@include box-shadow($alpha-shadow, 4px);
+			@include box-shadow($shadow-alpha, 4px);
 			border-radius: 1rem;
 		}
 
@@ -86,19 +120,16 @@ $alpha-article-2: 0.75;
 		}
 		
 		.type {
-			@include font-article;
-			font-family: "aboreto", sans-serif;
-			font-size: 1.1rem; // todo set this as font size variable
-			font-weight: 300;
-			color: color.change(black, $alpha: $alpha-article-2);
+			@include font($article-header-font, small);
+			color: black;
 		}
 		.rubrik { 
-			@include font-article-big;
-			color: color.change(black, $alpha: $alpha-article-1);
+			@include font($article-header-font, medium);
+			color: black;
 		}
 		.underrubrik { 
-			@include font-article;
-			color: color.change(black, $alpha: $alpha-article-2);
+			@include font($article-font, medium);
+			color: alpha(black, $info-alpha);
 		}
 
 		&.feature.small .skribent { display: none; }
@@ -107,8 +138,8 @@ $alpha-article-2: 0.75;
 			bottom: 0;
 			right: 0;
 	
-			@include font-article-small;
-			color: color.change(black, $alpha: $alpha-article-2);
+			@include font($article-font, small);
+			color: alpha(black, $info-alpha);
 	
 			img {
 				display: inline-block;

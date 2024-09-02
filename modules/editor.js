@@ -1,4 +1,4 @@
-import { Module } from "../modules.js";
+import { Module } from "#root/modules.js";
 export const module = new Module();
 
 import { PassThrough } from "stream";
@@ -46,7 +46,7 @@ function hookDocsBind(inStream, outStream) {
 	});
 }
 
-module.proxy({referer: /^https:\/\/.+?\/docs\/[\w-]+$/}, 
+module.proxy({referer: /\/docs\/.+/}, 
 	req => `https://docs.google.com${req.url}`,
 	null, (inStream, req) => {
 		if (req.path.endsWith("/bind")) {

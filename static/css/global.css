@@ -22,10 +22,11 @@ br {
 nav a, p a {
   box-sizing: content-box;
   text-decoration: none;
+  border-top: 1px transparent solid;
+  border-bottom: 1px transparent solid;
 }
 nav a:hover, p a:hover {
   cursor: pointer;
-  border-top: 1px transparent solid;
   border-bottom: 1px white solid;
 }
 
@@ -39,7 +40,7 @@ button:hover {
 }
 
 span {
-  display: block;
+  display: inline-block;
 }
 
 img {
@@ -49,4 +50,4 @@ img {
   flex: none;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/global.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AACA;EACC;EACA;;;AAGD;EACC;EAAa;;;AAGd;EACC;EACA;EACA;EACA;;;AAKD;EACC;;;AAGD;EACC;EACA;;AAEA;EACC;EACA;EACA;;;AAIF;EACC;EACA;EACA;;AAEA;EACC;;;AAIF;EACC;;;AAGD;EACC;EACA;EACA;EACA%22,%22file%22:%22global.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/global.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AACA;EACC;EACA;;;AAGD;EACC;EAAa;;;AAGd;EACC;EACA;EACA;EACA;;;AAKD;EACC;;;AAGD;EACC;EACA;EACA;EACA;;AAEA;EACC;EACA;;;AAIF;EACC;EACA;EACA;;AAEA;EACC;;;AAIF;EACC;;;AAGD;EACC;EACA;EACA;EACA%22,%22file%22:%22global.css%22%7D */

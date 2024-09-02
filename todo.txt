@@ -3,5 +3,10 @@
 [ ] Way for everyone to set announcement
 [ ] Display tags on article page
 [ ] Dino graphic change
+
 [ ] Smooth page navigation (why does it do that weird thing)
 [ ] Quick way to do fa-icons
+
+[ ] Mixin for centered inline blocks (set height and vertical-align properties)
+[ ] VSCode block comment shortcut?
+[ ] Text selection in #content is weird

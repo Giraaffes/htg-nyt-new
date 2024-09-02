@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/static/css/login-modal.css">
+<form id="login-modal" class="">
+	<div class="bgr"></div>
+	<div class="login">
+		<img class="lectio-icon" src="https://www.lectio.dk/apple-touch-icon-144x144-precomposed.png">
+		<h1>Log ind med Lectio</h1>
+		<iframe src="/embed/login"></iframe>
+	</div>
+</form>
+
+<script>
+	$(document).on("keypress", e => {
+		e.preventDefault();
+		if (e.key == " ") $("#login-modal").toggleClass("shown");
+	});
+
+	let $iframe = $("#login-modal iframe");
+	$iframe.on("load", () => {
+		let $lectioLogin = $iframe.contents().find("#m_Content_panel > section");
+		$iframe.width($lectioLogin.outerWidth(true));
+		$iframe.height($lectioLogin.outerHeight(true));
+	});
+</script>

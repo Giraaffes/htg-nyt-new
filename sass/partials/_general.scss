@@ -1,0 +1,72 @@
+@use "sass:list";
+@use "sass:selector";
+@use "sass:string";
+@use "sass:math";
+
+@use "util" as *;
+
+
+@mixin position-relatively { // Assumes only one selector (not comma-seperated list)
+	@each $sel in & {
+		$last-compound-sel: list.nth($sel, -1);
+		$last-simple-sel: list.nth(selector.simple-selectors($last-compound-sel), -1);
+		@if starts-with($last-simple-sel, "::") {
+			$new-sel: list.set-nth($sel, -1, string.slice($last-compound-sel, 1, -1 - string.length($last-simple-sel)));
+			@at-root #{$new-sel} {
+				position: relative;
+			}
+		} @else {
+			$ancestry: slice-list($sel, 1, -2);
+			$me: list.nth($sel, -1);
+			@at-root #{$ancestry} :has(> #{$me}), #{$ancestry}:has(> #{$me}) {
+				position: relative;
+			}
+		}
+	}
+
+	position: absolute;
+}
+
+@mixin font-size($font-size, $center-line: false, $fix-descenders: false) {
+	font-size: $font-size;
+	@if $center-line {
+		height: $font-size;
+		line-height: $font-size;
+		@if $fix-descenders {
+			margin-bottom: calc($font-size * -0.25);
+		}
+	}
+}
+
+@mixin box-shadow($alpha, $size) {
+	box-shadow: 0 0 calc($size * 2) $size alpha(black, $alpha);
+}
+
+// doesn't work currently i don't think
+// @mixin directional-shadow($alpha, $x, $y) {
+// 	$size: max(math.abs($x), math.abs($y));
+// 	box-shadow: $x $y calc($size * 2) calc($size * -1.25) alpha(black, $alpha);
+// }
+
+// not necessary
+// @mixin hover-pop($scale: 120%) {
+// 	&:hover {
+// 		scale: $scale;
+// 	}
+// }
+
+@mixin light-up($color, $default-alpha, $hover-alpha) {
+	color: alpha($color, $default-alpha);
+	&:hover { color: alpha($color, $hover-alpha); }
+}
+
+@mixin expand-area($size) {
+	&::after {
+		content: "";
+		@include position-relatively;
+		width: 100%; height: 100%;
+		top: -$size; left: -$size;
+		padding: $size;
+	}
+}
+

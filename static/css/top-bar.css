@@ -5,11 +5,17 @@
   top: 0;
   z-index: 1;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.125);
-  background-color: var(--color);
+  background-color: var(--bgr-color);
   color: white;
   display: flex;
   padding: 0 2.5rem;
   user-select: none;
+}
+#top-bar.site_frontPage {
+  --bgr-color: #466e64;
+}
+#top-bar.site_skribent {
+  --bgr-color: #145a73;
 }
 #top-bar > * {
   flex: 1 0 0%;
@@ -19,7 +25,6 @@
 #top-bar > * {
   display: flex;
   align-items: center;
-  gap: 1rem;
   justify-content: center;
 }
 #top-bar > *:first-child {
@@ -27,9 +32,6 @@
 }
 #top-bar > *:last-child {
   justify-content: right;
-}
-#top-bar .htgnyt {
-  gap: 0rem;
 }
 #top-bar .htgnyt img {
   height: 3.25rem;
@@ -48,11 +50,13 @@
 #top-bar .htgnyt h1 {
   font-size: 1em;
   margin-left: -0.6rem;
-  background-color: var(--color);
-  box-shadow: -8px 0 8px 0 var(--color);
+  background-color: var(--bgr-color);
+  box-shadow: -8px 0 8px 0 var(--bgr-color);
 }
 #top-bar .htgnyt h2 {
+  font-family: "aboreto", sans-serif;
   font-size: 1.1rem;
+  font-weight: 300;
   margin-left: -0.2rem;
 }
 #top-bar .nav {
@@ -112,4 +116,4 @@
   flex: 0 0 4.5rem;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/top-bar.scss%22,%22../../sass/partials/_common.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;EACC;EACA,QCIgB;EDHhB;EACA;EACA;ECkGA;ED/FA;EACA;EC8HA;ED3HA;EACA;;AC6HC;EACC;EACA;EACA;;AAMF;EAEE;EACA;EACA;EAEA;;AACA;EAAgB;;AAChB;EAAe;;AD5IjB;EACC;;AAEA;EAAM;;AACN;EACC,aCHW;EAqCb,WDjCqB;ECmCpB,QDnCoB;ECoCpB,aDpCoB;ECsCnB;;ADrCA;EAAM;EAAuB;;AAG9B;EACC;EACA;EACA;EACA;;AAED;EACC;EACA;;AAIF;EACC;EACA;;AACA;EC0BD,aAlDU;EAsCV,WAamB;EAXlB,QAWkB;EAVlB,aAUkB;EARjB;EASF;EAmDA;;AACA;EAAU;;AAIV;EACC;EA3ED;EA6EC;EAAa;EACb;EAAa;EACb,SDtFsB;;ACLZ;EACR;;;ADKD;EAAI;;AAIN;EACC;ECsED;;AACA;EAAU;;AAIV;EACC;EA3ED;EA6EC;EAAa;EACb;EAAa;EACb,SD9EqB;;ACbX;EACR;;;ADeJ;EACC;EACA%22,%22file%22:%22top-bar.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/top-bar.scss%22,%22../../sass/partials/_globals.scss%22,%22../../sass/partials/_general.scss%22,%22../../sass/partials/_flex.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAKA;EACC;EACA,QCFgB;EDGhB;EACA;EACA;EE+BA;EFzBA;EACA;EGHA;EHMA;EACA;;AATA;EAAmB;;AACnB;EAAkB;;AGIjB;EACC;EACA;EACA;;AAMF;EAEE;EACA;EAEA;;AACA;EAAgB;;AAChB;EAAe;;AHThB;EAAM;;AACN;EAEC,aCJmB;ECOrB,WFFqB;EEIpB,QFJoB;EEKpB,aFLoB;EEOnB;;AFNA;EAAM;EAAuB;;AAG9B;EACC;EACA;EACA;EACA;;AAED;ECOD,aAtBqB;ECOrB,WDmBmB;EACnB;EDVE;;AAIF;EACC;EACA;;AACA;ECFD,aAvBe;ECQf,WDmBmB;ECjBlB,QDiBkB;EChBlB,aDgBkB;ECdjB;EDeF;ECQA;;AACA;EAAU;;AAIV;EACC;EAtCD;EAwCC;EAAa;EACb;EAAa;EACb,SFlBsB;;AEpCZ;EACR;;;AFoCD;EAAI;;AAIN;EACC;EEED;;AACA;EAAU;;AAIV;EACC;EAtCD;EAwCC;EAAa;EACb;EAAa;EACb,SFVqB;;AE5CX;EACR;;;AF8CJ;EACC;EACA%22,%22file%22:%22top-bar.css%22%7D */

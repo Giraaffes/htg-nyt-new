@@ -1,6 +1,10 @@
 #content {
+  margin-top: 4.5rem;
   flex: 1;
   padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 #content.wide {
   width: 80rem;
@@ -8,15 +12,47 @@
 #content.thin {
   width: 50rem;
 }
-#content > * {
-  margin-bottom: 2.5rem;
+#content section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#content .header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 #content h1 {
-  margin-bottom: 1rem;
   font-family: "barlow-semi-condensed", sans-serif;
   font-size: 2rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.85);
+}
+#content .search {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#content .search span {
+  font-family: "barlow-semi-condensed", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+#content .search input {
+  height: 100%;
+  width: 15rem;
+  margin: 0.1rem 0;
+  font-family: "barlow-semi-condensed", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  padding: 0 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #e6e6e6;
+}
+#content .search input:focus {
+  background-color: white;
 }
 #content .multi {
   width: 100%;
@@ -32,7 +68,7 @@
   flex: 0 0 0;
   align-self: stretch;
   border: none;
-  border-left: 2px solid #e6e6e6;
+  border-left: 2px solid rgba(0, 0, 0, 0.11);
   margin: 1rem 0;
 }
 #content .article-list {
@@ -41,14 +77,17 @@
   box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.125);
   border-radius: 1rem;
 }
-#content .article-list .article:nth-child(even) {
-  background-color: #f2f2f2;
+#content .article-list .article:nth-child(even of :not(.hidden)) {
+  background-color: #f0f0f0;
 }
 #content .article {
   text-decoration: none;
   padding: 1rem;
   display: flex;
   gap: 1rem;
+}
+#content .article.hidden {
+  display: none;
 }
 #content .article.feature.small {
   height: 10rem;
@@ -87,13 +126,10 @@
   justify-content: center;
 }
 #content .article .type {
-  font-family: "lora", serif;
-  font-size: 1.1rem;
-  font-weight: 400;
   font-family: "aboreto", sans-serif;
   font-size: 1.1rem;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.75);
+  color: black;
 }
 #content .article .rubrik {
   font-family: "aboreto", sans-serif;
@@ -134,4 +170,4 @@
   border-radius: 0.7rem;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/front-page.scss%22,%22../../sass/partials/_common.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAUA;EACC;EACA;;AAEA;EAAS;;AACT;EAAS;;AAET;EAAM;;AACN;EACC;EC6DD,aA9DU;EAsCV,WAyBmB;EACnB;ED5DC;;AAGD;EACC;EC+GD;ED5GC;;AC+GA;EACC;EACA;EACA;;ADhHD;ECoID;EACA;EAEA;EAEC,aDxIsC;ECyItC;;ADrID;EACC;EACA;ECmED;EDhEC;;AAEA;EACC;;AAIF;EAUC;EAMA;EACA;EACA;;AAjBA;EAAkB;;AAClB;EAAgB;;AAChB;EAAW;;AAEX;ECoDD;EDlDE;;AAID;EACC;;AACA;EAAU;;AAOX;EACC;EACA;EACA;;AAED;EACC;EACA;;AAGD;EACC;EACA;EACA;;AAED;EACC;;AAGD;ECKD,aAxEc;EAoCd,WAqCmB;EACnB;EDLE;EACA;EACA;EACA;;AAED;ECRD,aAnEa;EAqCb,WA+BmB;EACnB;EDQE;;AAED;ECND,aAxEc;EAoCd,WAqCmB;EACnB;EDME;;AAGD;EAA4B;;AAC5B;ECpDD;EDsDE;EACA;ECTF,aA9Ec;EAoCd,WA2CmB;EACnB;EDUE;;AChES;EACR;;;AADQ;EACR;;;ADiED;EACC;EACA;EACA;EACA%22,%22file%22:%22front-page.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/front-page.scss%22,%22../../sass/partials/_globals.scss%22,%22../../sass/partials/_flex.scss%22,%22../../sass/partials/_general.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACC,YCCgB;EDAhB;EACA;EEJA;EACA;EACA,KFOsB;;AAHtB;EAAS;;AACT;EAAS;;AAKT;EEZA;EACA;EACA,KFWuB;;AAGvB;EEhBA;EACA;EACA,KFeuB;;AAGvB;ECuBA,aAvBe;EEQf,WFmBmB;EACnB;ED1BC;;AAGD;EACC;EAEA;EACA;EACA;;AAEA;ECWD,aAvBe;EEQf,WFmBmB;EACnB;;ADZC;EACC;EACA;EACA;ECIF,aAvBe;EEQf,WFmBmB;EACnB;EDNE;EACA;EACA;EAEA,kBCvCa;;ADwCb;EAAU;;AAKZ;EACC;EEzCD;EF4CC;;AEzCA;EACC;EACA;EACA;;AFwCD;EErBD;EACA;EAEA;EAEC,aFiBsC;EEhBtC;;AFoBD;EACC;EACA;EG1BD;EH6BC;;AAEA;EACC,kBCjEa;;ADsEf;EAcC;EAMA;EACA;EACA;;AArBA;EACC;;AAGD;EAAkB;;AAClB;EAAgB;;AAChB;EAAW;;AAEX;EG9CD;EHgDE;;AAID;EACC;;AACA;EAAU;;AAOX;EACC;EACA;EACA;;AAED;EACC;EACA;;AAGD;EACC;EACA;EACA;;AAED;EACC;;AAGD;EC5ED,aAtBqB;EEOrB,WFmBmB;EACnB;EDyEE;;AAED;EChFD,aAtBqB;EEOrB,WFmBmB;EACnB;ED6EE;;AAED;ECpFD,aArBc;EEMd,WFmBmB;EACnB;EDiFE;;AAGD;EAA4B;;AAC5B;EG7GD;EH+GE;EACA;EC7FF,aArBc;EEMd,WFmBmB;EACnB;ED2FE;;AGzHS;EACR;;;AADQ;EACR;;;AH0HD;EACC;EACA;EACA;EACA%22,%22file%22:%22front-page.css%22%7D */

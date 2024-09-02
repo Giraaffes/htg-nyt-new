@@ -1,0 +1,21 @@
+@use "sass:list";
+@use "sass:string";
+@use "sass:color";
+
+
+@function alpha($clr, $alpha) {
+	@return color.change($clr, $alpha: $alpha);
+}
+
+@function slice-list($list, $start, $end) {
+	$new-list: ();
+	@if $end < 0 { $end: list.length($list) + 1 + $end }
+	@for $n from $start through $end {
+		$new-list: list.append($new-list, list.nth($list, $n));
+	}
+	@return $new_list;
+}
+
+@function starts-with($str, $match-str) {
+	@return string.slice($str, 1, string.length($match-str)) == $match-str;
+}

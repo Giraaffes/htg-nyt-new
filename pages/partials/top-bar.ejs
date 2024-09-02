@@ -1,9 +1,7 @@
 <%_
-// todo put colors in css?
-// todo want icons or no?
 const sites = {
-	"frontPage": ["", "", 1, "#466e64"], 
-	"skribent": ["SKRIBENT", "", 0.8, "#145a73"], 
+	"frontPage": ["", "", 1], 
+	"skribent": ["SKRIBENT", "", 0.8], 
 };
 const categories = [
 	["Forside", "home", 0.875, "/"], 
@@ -13,10 +11,10 @@ const categories = [
 	["Aktiviteter", "calendar-alt", 0.875, "/page"]
 ];
 
-let [ siteName, siteIcon, siteIconSize, siteColor ] = sites[site];
+let [ siteName, siteIcon, siteIconSize ] = sites[site];
 _%>
 <link rel="stylesheet" href="/static/css/top-bar.css">
-<header id="top-bar" style="--color: <%= siteColor %>;">
+<header id="top-bar" class="site_<%= site %>">
 	<div class="htgnyt">
 		<img src="/static/img/htg_logo_new.png" draggable="false">
 		<div class="text">
@@ -41,7 +39,7 @@ _%>
 		<button class="menu-btn fa-solid fa-bars"></button>
 	</div>
 </header>
-<div id="top-bar-space"></div>
+<!-- <div id="top-bar-space"></div> -->
 
 <script>
 	$("#top-bar .menu-btn").on("click", () => {

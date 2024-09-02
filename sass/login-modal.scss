@@ -1,0 +1,57 @@
+@use "partials/all" as *;
+
+#login-modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 3;
+
+	// todo make this a mixin
+	$fade: 0.2s;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity $fade linear, visibility 0s linear $fade;
+	&.shown { 
+		opacity: 1; visibility: visible;
+		transition: opacity $fade linear;
+	}
+
+	@include center-flex;
+
+	.bgr {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+
+		background: black;
+		opacity: 0.5;
+	}
+
+	.login {
+		background: white;
+		border-radius: 0.5rem;
+		padding: 2.5rem;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+	
+	.lectio-icon { 
+		height: 3rem;
+		@include box-shadow($shadow-alpha, 2px);
+	}
+
+	h1 {
+		@include font($standard-font, large);
+		text-align: center;
+	}
+
+	iframe {
+		border: none;
+		align-self: stretch;
+		margin-top: 0.5rem;
+	}
+}

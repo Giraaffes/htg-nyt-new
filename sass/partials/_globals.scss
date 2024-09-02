@@ -1,0 +1,52 @@
+@use "sass:map";
+@use "sass:list";
+
+@use "general" as *;
+
+$top-bar-height: 4.5rem;
+
+// Shades (of gray (god forbid there be 50))
+$general-bgr-1: #f0f0f0;
+$general-bgr-2: #e6e6e6;
+$footer-bgr: #999;
+$side-menu-bgr: #111;
+
+// Alpha values
+$nav-alpha: 0.8;
+$shadow-alpha: 0.125;
+
+$header-alpha: 0.85;
+$info-alpha: 0.75;
+$hr-alpha: 0.11;
+
+// Fonts
+$standard-font: "barlow-semi-condensed", sans-serif;
+$article-header-font: "aboreto", sans-serif;
+$article-font: "lora", serif;
+
+$font-config: (
+	$standard-font: (
+		"large": 2rem 500,
+		"medium": 1.3rem 400,
+		"small": 0.95rem 400
+	),
+	$article-header-font: (
+		"large": 3rem 500, // not used yet, will adjust
+		"medium": 1.5rem 600,
+		"small": 1.1rem 300
+	),
+	$article-font: (
+		"large": 2rem 400, // not used (yet?), will adjust
+		"medium": 1.1rem 400,
+		"small": 0.95rem 400
+	)
+);
+
+@mixin font($font, $size, $center-line: false) {
+	font-family: $font;
+
+	$config: map.get($font-config, $font);
+	$font-size-and-weight: map.get($config, $size);
+	@include font-size(list.nth($font-size-and-weight, 1), $center-line, true);
+	font-weight: list.nth($font-size-and-weight, 2);
+}

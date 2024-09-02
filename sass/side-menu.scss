@@ -1,6 +1,6 @@
-@use "partials/common" as *;
+@use "partials/all" as *;
 
-$side-menu-width: 17.5rem;
+$side-menu-width: 16rem;
 #side-menu {
 	position: fixed;
 	width: $side-menu-width;
@@ -13,7 +13,7 @@ $side-menu-width: 17.5rem;
 	}
 	transition: right 0.3s ease-out;
 	
-	background-color: $gray-3;
+	background-color: $side-menu-bgr;
 	color: white;
 	z-index: 2;
 	
@@ -24,27 +24,26 @@ $side-menu-width: 17.5rem;
 	gap: 1.25rem;
 
 	.close-btn {
-		$btn-size: 1.75rem;
+		$btn-size: 1.6rem;
 		$top-dist: calc($top-bar-height / 2.0 - $btn-size / 2.0);
 		
 		position: absolute !important; // to override expand-area's position-relatively include
 		left: calc($top-dist * 1.25);
 		top: $top-dist;
 
-		@include light-up(white, $alpha-nav, 1);
+		@include light-up(white, $nav-alpha, 1);
 		@include expand-area(0.5rem);
 		font-size: $btn-size;
 	}
 
 	a {
-		@include font-std-1($center-line: true);
-		@include light-up(white, $alpha-nav, 1);
+		@include font($standard-font, medium, $center-line: true);
+		@include light-up(white, $nav-alpha, 1);
 		@include expand-area(1.25rem);
 		i { width: 1.5rem; text-align: right; }
 	}
 	
 	hr { 
-		@include flex-hr($type: column, $style: 1px solid $gray-4);
-		margin-left: 1rem;
+		@include flex-hr($type: column, $style: 1px solid alpha(white, $hr-alpha));
 	}
 }

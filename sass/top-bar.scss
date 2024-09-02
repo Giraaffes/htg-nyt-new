@@ -1,4 +1,7 @@
-@use "partials/common" as *;
+@use "partials/all" as *;
+
+$front-page-bgr: #466e64;
+$skribent-site-bgr: #145a73;
 
 #top-bar {
 	position: fixed;
@@ -7,8 +10,11 @@
 	top: 0;
 	z-index: 1;
 
-	@include box-shadow($alpha-shadow, 5px);
-	background-color: var(--color);
+	&.site_frontPage { --bgr-color: #{$front-page-bgr}; }
+	&.site_skribent { --bgr-color: #{$skribent-site-bgr}; }
+
+	@include box-shadow($shadow-alpha, 5px);
+	background-color: var(--bgr-color);
 	color: white;
 
 	@include spread-flex($split-equally: true, $spread-children: true);
@@ -16,11 +22,10 @@
 	user-select: none;
 
 	.htgnyt {
-		gap: 0rem;
-
 		img { height: 3.25rem; }
 		.text {
-			font-family: $font-header;
+			// todo should this be its own font definition or be the same as medium article header or what??
+			font-family: $article-header-font;
 			@include font-size(1.7rem, $center-line: true, $fix-descenders: true);
 			> * { display: inline-block; font-weight: 300; }
 		}
@@ -28,11 +33,11 @@
 		h1 {
 			font-size: 1em;
 			margin-left: -0.6rem;
-			background-color: var(--color);
-			box-shadow: -8px 0 8px 0 var(--color);
+			background-color: var(--bgr-color);
+			box-shadow: -8px 0 8px 0 var(--bgr-color);
 		}
 		h2 {
-			font-size: 1.1rem; // todo set this as font size variable
+			@include font($article-header-font, small);
 			margin-left: -0.2rem;
 		}
 	}
@@ -41,8 +46,8 @@
 		flex: 2;
 		gap: 2rem;
 		a {
-			@include font-std-1($center-line: true);
-			@include light-up(white, $alpha-nav, 1);
+			@include font($standard-font, medium, $center-line: true);
+			@include light-up(white, $nav-alpha, 1);
 			@include expand-area(0.75rem);
 			i { margin-right: 0.25em; }
 		}
@@ -50,7 +55,7 @@
 
 	.menu-btn { 
 		font-size: 1.8rem;
-		@include light-up(white, $alpha-nav, 1);
+		@include light-up(white, $nav-alpha, 1);
 		@include expand-area(0.5rem);
 	}
 }

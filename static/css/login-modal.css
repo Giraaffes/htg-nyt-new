@@ -1,0 +1,51 @@
+#login-modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s linear, visibility 0s linear 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#login-modal.shown {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s linear;
+}
+#login-modal .bgr {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: black;
+  opacity: 0.5;
+}
+#login-modal .login {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+#login-modal .lectio-icon {
+  height: 3rem;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.125);
+}
+#login-modal h1 {
+  font-family: "barlow-semi-condensed", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+}
+#login-modal iframe {
+  border: none;
+  align-self: stretch;
+  margin-top: 0.5rem;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/login-modal.scss%22,%22../../sass/partials/_flex.scss%22,%22../../sass/partials/_general.scss%22,%22../../sass/partials/_globals.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;EACC;EACA;EACA;EACA;EAIA;EACA;EACA;ECJA;EACA;EACA;;ADGA;EACC;EAAY;EACZ;;AAKD;EACC;EACA;EACA;EACA;EAEA;EACA;;AAGD;EACC;EACA;EACA;EAEA;EACA;EACA;EACA;;AAGD;EACC;EEDD;;AFKA;EGDA,aAvBe;EDQf,WCmBmB;EACnB;EHFC;;AAGD;EACC;EACA;EACA%22,%22file%22:%22login-modal.css%22%7D */

@@ -1,8 +1,42 @@
 import axios from "axios";
-import { Stream, PassThrough } from "stream";
+import { Stream } from "stream";
+import beautify from "js-beautify";
+import * as cheerio from "cheerio";
+
+import { escapeRegex, concatRegex, cookieString } from "#root/util.js";
+
+import config from "#root/config.json" assert {type: "json"};
 
 
-// From https://expressjs.com/en/4x/api.html#routing-methods
+// (R) Custom render function
+function reorderStylesAndScripts(html) {
+	let $ = cheerio.load(html);
+	$(" body link[rel=stylesheet]").appendTo("head");
+	$(" body script").appendTo("body");
+	return $.html();
+}
+
+function render(res, view, ...args) {
+	let callbackArg = args.find(a => typeof a == "function");
+	if (callbackArg) args.splice(args.indexOf(callbackArg), 1);
+	
+	res.render(view, ...args, (err, html) => {
+		if (!err) {
+			html = reorderStylesAndScripts(html);
+			html = beautify.html(html, config.htmlBeautifier);
+		}
+		if (callbackArg) {
+			callbackArg(err, html);
+		} else {
+			if (err) { next(err); } else { res.send(html); }
+		}
+	});
+}
+
+
+// (O) Routes
+
+// https://expressjs.com/en/4x/api.html#routing-methods
 const HTTPMethods = ["checkout", "copy", "delete", "get", "head", "lock", "merge", "mkactivity", "mkcol", "move", "m-search", "notify", "options", "patch", "post", "purge", "put", "report", "search", "subscribe", "trace", "unlock", "unsubscribe"];
 
 class Route {
@@ -30,16 +64,22 @@ class Route {
 		this.match.method = (this.match.method || "all").toLowerCase();
 		this.match.path = this.match.path || "/*";
 		
-		// if (!this.match.specific && !this.match.path.endsWith("*")) {
-		// 	let unspecificPath = this.match.path;
-		// 	if (!unspecificPath.endsWith("/")) unspecificPath += "/";
-		// 	unspecificPath += "*";
-		// 	this.match.path = [this.match.path, unspecificPath];
-		// }
+		if (this.match.referer) {
+			if (this.match.referer instanceof RegExp) {
+				this.match.referer = concatRegex(
+					/^https?:\/\/.+?/, this.match.referer, /\/|\?|$/
+				);
+			} else {
+				let pathRegex = escapeRegex(this.match.referer).replaceAll("\\*", ".+");
+				this.match.referer = new RegExp(
+					`^https?://.+?${pathRegex}(?:\/|\?|$)`
+				);
+			}
+		}
 	}
 
 	checkHeaders(req, res, next) {
-		let { method, path, specific, ...headers } = this.match;
+		let { method, path, ...headers } = this.match;
 		let doHeadersMatch = Object.entries(headers).every(([ h, v ]) => 
 			req.get(h) && v instanceof RegExp ? req.get(h).match(v) : req.get(h) == v
 		);
@@ -50,10 +90,15 @@ class Route {
 		server[this.match.method](this.match.path, 
 			this.checkHeaders.bind(this),
 			...this.middleHandlers, 
-			(req, res, next) => this.mainHandler(req, res, next, database) // todo do i need to add await/async??
+			(req, res, next) => this.mainHandler(
+				req, res, next, render.bind(null, res), database
+			)
 		);
 	}
 }
+
+
+// (Y) Proxy routes
 
 class ProxyRoute extends Route {
 	constructor(match, proxyUrl, handlers) {
@@ -68,14 +113,19 @@ class ProxyRoute extends Route {
 		this.postHandler = this.handlers[this.middleHandlers.length + 1];
 	}
 
-	async proxyHandler(req, res, next, database) {
-		// todo is this necessary?
+	async proxyHandler(req, res, next) {
+		// Necessary
 		delete req.headers["host"];
-		delete req.headers["content-length"];
 
-		// uhh guess i gotta be careful (https://github.com/advisories/GHSA-8hc4-vh64-cxmj)
-		let proxyUrl = (typeof this.proxyUrl == "function") ? this.proxyUrl(req) : this.proxyUrl;
+		// Axios should set content-length
+		delete req.headers["content-length"];
+		
+		// Pre-request handler (allow for modifying cookies)
 		let reqData = this.preHandler ? this.preHandler(req, res, next) : req;
+		req.headers["cookie"] = cookieString(req.cookies);
+
+		// Uhh guess i gotta be careful (https://github.com/advisories/GHSA-8hc4-vh64-cxmj)
+		let proxyUrl = (typeof this.proxyUrl == "function") ? await this.proxyUrl(req) : this.proxyUrl;
 		let proxyRes = await axios({
 			url: proxyUrl,
 			method: req.method,
@@ -85,7 +135,12 @@ class ProxyRoute extends Route {
 			maxRedirects: 0,
 			validateStatus: () => true
 		});
-		let resData = this.postHandler ? this.postHandler(proxyRes.data, req, res, next) : proxyRes.data;
+
+		// Post-request handler
+		let resData = this.postHandler ? await this.postHandler(proxyRes.data, req, res, next) : proxyRes.data;
+		
+		// No redirects
+		delete proxyRes.headers["location"];
 
 		// To fix a glitch (I think) where nginx complains when both transfer-encoding and content-length are sent
 		delete proxyRes.headers["transfer-encoding"];
@@ -104,6 +159,9 @@ class ProxyRoute extends Route {
 	}
 }
 
+
+// (G) Module registry
+
 export class Module {
 	init = function() {};
 	routes = [];
@@ -112,12 +170,12 @@ export class Module {
 		this.init = handler;
 	}
 
-	route(options, ...handlers) {
-		this.routes.push(new Route(options, handlers));
+	route(match, ...handlers) {
+		this.routes.push(new Route(match, handlers));
 	}
 
-	proxy(options, proxyUrl, ...handlers) {
-		this.routes.push(new ProxyRoute(options, proxyUrl, handlers));
+	proxy(match, proxyUrl, ...handlers) {
+		this.routes.push(new ProxyRoute(match, proxyUrl, handlers));
 	}
 };
 
