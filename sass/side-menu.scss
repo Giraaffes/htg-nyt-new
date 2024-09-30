@@ -11,7 +11,7 @@ $side-menu-width: 16rem;
 	&.shown {
 		right: 0;
 	}
-	transition: right 0.3s ease-out;
+	transition: right 0.25s ease-out;
 	
 	background-color: $side-menu-bgr;
 	color: white;

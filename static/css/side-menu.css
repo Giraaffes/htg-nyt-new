@@ -4,7 +4,7 @@
   height: 100%;
   top: 0;
   right: -16rem;
-  transition: right 0.3s ease-out;
+  transition: right 0.25s ease-out;
   background-color: #111;
   color: white;
   z-index: 2;
