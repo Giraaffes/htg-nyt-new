@@ -17,11 +17,9 @@ $side-menu-width: 16rem;
 	color: white;
 	z-index: 2;
 	
-	padding: calc($top-bar-height + 1rem) 2rem;
-	display: flex;
-	flex-direction: column;
+	@include content-flex(1.25rem);
 	align-items: end;
-	gap: 1.25rem;
+	padding: calc($top-bar-height + 1rem) 2rem;
 
 	.close-btn {
 		$btn-size: 1.6rem;

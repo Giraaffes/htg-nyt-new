@@ -4,15 +4,19 @@ import { promisify } from "util";
 import "express-async-errors";
 import express from "express";
 
-import * as database from "./database.js";
-import config from "./config.json" assert {type: "json"};
+import cookieParser from "cookie-parser"; // Do I use this? (Do I need to use this?)
+
 
 const server = express();
 server.set("view engine", "ejs");
 server.set("views", "./pages");
-
-import cookieParser from "cookie-parser";
 server.use(cookieParser());
+
+import * as database from "./database.js";
+import * as docs from "./docs.js";
+
+import config from "./config.json" assert {type: "json"};
+import googleCredentials from "./google-service-account.json" assert {type: "json"};
 
 
 // Remember 799
@@ -24,7 +28,7 @@ await modules.register("pages");
 await modules.register("editor");
 await modules.register("login");
 
-modules.useRoutes(server, database);
+modules.useRoutes(server, database, docs);
 
 
 // (2) GitHub webhook
@@ -65,13 +69,16 @@ server.use((err, req, res, next) => {
 
 
 // (5) Main
-const dbOptions = process.env.LOCAL ? config.dbRemoteOptions : config.dbOptions;
+let dbOptions = process.env.LOCAL ? config.dbRemoteOptions : config.dbOptions;
 await database.connect(dbOptions);
 console.log("Database connected");
 
-const port = process.env.LOCAL ? 8889 : config.port;
+await docs.connect(googleCredentials);
+console.log("Docs connected");
+
+let port = process.env.LOCAL ? 8889 : config.port;
 await promisify(server.listen.bind(server))(port);
 console.log("Server ready");
 
-await modules.init(database);
+await modules.init(database, docs);
 console.log(`Modules ready (${modules.count})`);

@@ -1,0 +1,93 @@
+@use "partials/all" as *;
+
+#content {
+	@include content-flex(1rem);
+
+	h1 {
+		@include font($article-header-font, large);
+		margin-bottom: -0.25em;
+	}
+
+	.subheading {
+		@include font($article-font, large);
+	}
+
+	h2 {
+		@include font($article-header-font, medium);
+		margin-top: 0.5em;
+		margin-bottom: -0.25em;
+	}
+
+	p {
+		@include font($article-font, medium);
+		line-height: 1.4;
+	}
+
+	img {
+		@include box-shadow($shadow-alpha, 1px);
+	}
+
+	.img-desc {
+		@include font($article-font, small);
+		color: alpha(black, $article-desc-alpha);
+		margin-top: -0.75em;
+	}
+
+	.qa {
+		position: relative;
+		margin: 0 2rem 0.4rem 2rem;
+		padding: 1rem 1.5rem 0.9rem 1.5rem;
+		border-radius: 1.5rem;
+		
+		&.question {
+			background-color: #ddd;
+
+			align-self: start;
+			margin-right: 4rem;
+			border-bottom-left-radius: 0;
+
+			&::after {
+				content: "";
+
+				position: absolute;
+				left: -0.5rem;
+				bottom: -0.3rem;
+				width: 2.2rem;
+				height: 2rem;
+
+				background-color: inherit;
+				clip-path: polygon(0% 100%, 40% 0%, 100% 70%);
+			}
+		}
+
+		&.answer {
+			background-color: #fcc;
+
+			align-self: end;
+			margin-left: 4rem;
+			border-bottom-right-radius: 0;
+
+			&::after {
+				content: "";
+
+				position: absolute;
+				right: -0.5rem;
+				bottom: -0.3rem;
+				width: 2.2rem;
+				height: 2rem;
+
+				background-color: inherit;
+				clip-path: polygon(100% 100%, 60% 0%, 0% 70%);
+			}
+		}
+	}
+
+	.qa-person {
+		@include font($article-font, small);
+		color: alpha(black, $article-desc-alpha);
+		margin-top: -0.75em;
+	}
+	.qa.answer + .qa-person { /* Can't do this as a nested block i guess */
+		text-align: right;
+	}
+}

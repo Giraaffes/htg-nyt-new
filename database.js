@@ -4,6 +4,12 @@ export let isConnected = false;
 export let connection;
 
 
+// Why do I have both query() and execute()?
+// Well, I need array placeholders (for IN statements), but they need to be formatted manually.
+// This would defeat the purpose of using execute() for performance,
+// and it would (principially) make execute() unsecure.
+
+
 export function connect(options) {
 	return new Promise((res, rej) => {
 		connection = mySQL.createConnection(options);
@@ -18,12 +24,12 @@ export function connect(options) {
 	});
 };
 
-function mySQLFormat(value) {
+function formatMySQL(value) {
 	if (typeof value == "number" || typeof value == "boolean") {
 		return value;
 	} else if (value instanceof Array) { // Assumes string values
 		if (value.length == 0) value = [null];
-		return `(${value.map(mySQLFormat).join(", ")})`;
+		return `(${value.map(formatMySQL).join(", ")})`;
 	} else if (!value) {
 		return "NULL";
 	} else {
@@ -35,7 +41,7 @@ export function query(query, values) {
 	let i = -1;
 	query = query.replaceAll("?", () => {
 		i++;
-		return mySQLFormat(values[i]);
+		return formatMySQL(values[i]);
 	});
 
 	return new Promise((res, rej) => {
@@ -50,7 +56,7 @@ export function query(query, values) {
 }
 
 export function execute(query, values) {
-	for (let i = 0; i < values.length; i++) { // I think this is necessary
+	for (let i = 0; i < values.length; i++) { // I think this is necessary but I'm not sure
 		if (values[i] === undefined) values[i] = null;
 	}
 

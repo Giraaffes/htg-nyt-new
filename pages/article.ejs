@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTG-NYT</title>
+
+		<%- include("partials/head"); %>
+		<link rel="stylesheet" href="/static/css/article.css">
+	</head>
+	<body>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+		<%- include("partials/top-bar", {site: "main"}); %>
+		
+		<%- include("partials/side-menu"); %>
+
+		<%_
+		// (Do code blocks like these create extra empty lines?)
+		function formatTextPart(part) {
+			let html = part.text;
+			if (part.bold) html = `<b>${html}</b>`;
+			if (part.italic) html = `<i>${html}</i>`;
+			if (part.underline) html = `<u>${html}</u>`;
+			if (part.strikethrough) html = `<s>${html}</s>`;
+			if (part.color) html = `<span style="color: ${part.color};">${html}</span>`;
+			if (part.link) html = `<a href="${part.link}"target="_blank" >${html}</a>`;
+			return html;
+		}
+		_%>
+		<div id="content" class="thin">
+			<h1><%= heading %></h1>
+			<p class="subheading"><%= subheading %></p>
+
+			<% for (let { type, ...element } of content) { -%>
+				<% if (type == "text") { -%>
+					<p><%- element.parts.map(formatTextPart).join("") %></p>
+				<% } else if (type == "heading") { -%>	
+					<h2><%- element.text %></h2>
+				<% } else if (type == "image") { -%>
+					<img src="<%= element.url %>">
+					<% if (element.desc) { -%><p class="img-desc"><%= element.desc %></p><% }-%>
+				<% } else if (type == "question" || type == "answer") { -%>
+					<p class="qa <%= type %>"><%= element.text %></p>
+					<% if (element.person) { -%><span class="qa-person"><%= element.person %></span><% }-%>
+				<% } -%>
+			<% } -%>
+		</div>
+
+		<%- include("partials/footer"); %>
+		
+		<script>
+		</script>
+	</body>
+</html>

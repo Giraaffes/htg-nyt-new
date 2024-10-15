@@ -1,4 +1,6 @@
-// (_) General
+@use "partials/all" as *;
+
+// (_) Page
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -9,12 +11,19 @@ html, body {
 }
 
 body {
-	display: flex;
+	@include spread-flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
 }
 
+#content {
+	margin-top: $top-bar-height;
+	flex: 1;
+	padding: 2.5rem 0;
+
+	&.wide { width: 80rem; }
+	&.thin { width: 50rem; }
+}
 
 // (_) Elements
 br {

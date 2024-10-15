@@ -2,16 +2,8 @@
 
 
 #content {
-	margin-top: $top-bar-height;
-	flex: 1;
-	padding: 2.5rem 0;
-
-	&.wide { width: 80rem; }
-	&.thin { width: 50rem; }
-
 	@include content-flex(2.5rem);
 	
-
 	section {
 		@include content-flex(1rem);
 	}
@@ -128,7 +120,7 @@
 			color: black;
 		}
 		.underrubrik { 
-			@include font($article-font, medium);
+			@include font($article-font, small);
 			color: alpha(black, $info-alpha);
 		}
 
@@ -138,7 +130,7 @@
 			bottom: 0;
 			right: 0;
 	
-			@include font($article-font, small);
+			@include font($article-font, tiny);
 			color: alpha(black, $info-alpha);
 	
 			img {

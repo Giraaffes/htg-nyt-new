@@ -10,7 +10,7 @@ $skribent-site-bgr: #145a73;
 	top: 0;
 	z-index: 1;
 
-	&.site_frontPage { --bgr-color: #{$front-page-bgr}; }
+	&.site_main { --bgr-color: #{$front-page-bgr}; }
 	&.site_skribent { --bgr-color: #{$skribent-site-bgr}; }
 
 	@include box-shadow($shadow-alpha, 5px);

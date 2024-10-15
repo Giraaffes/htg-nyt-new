@@ -1,12 +1,19 @@
-
-[ ] Hmm anyone could just connect to the database
-[ ] Way for everyone to set announcement
-[ ] Display tags on article page
+Remember
+[ ] Fix database access
 [ ] Dino graphic change
+[ ] Semantics and stuff (subheading: https://x.com/stevefaulkner/status/1236241209686966272?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1236241209686966272%7Ctwgr%5E877e5c9628e36ee5cfc0d3b08c156b2c70df94a0%7Ctwcon%5Es1_c10&ref_url=https%3A%2F%2Fcss-tricks.com%2Fhtml-for-subheadings-and-headings%2F)
 
-[ ] Smooth page navigation (why does it do that weird thing)
+Code
 [ ] Quick way to do fa-icons
-
 [ ] Mixin for centered inline blocks (set height and vertical-align properties)
 [ ] VSCode block comment shortcut?
+
+UI
+[ ] Scrollbar should not shift top bar nor footer
 [ ] Text selection in #content is weird
+
+Plan
+1. [X] Old articles -> docs
+2. [ ] Docs -> New article view
+3. [ ] Docs <-> New article editor
+4. [ ] Article management and users

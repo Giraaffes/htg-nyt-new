@@ -1,0 +1,89 @@
+#content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#content h1 {
+  font-family: "aboreto", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: -0.25em;
+}
+#content .subheading {
+  font-family: "lora", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+#content h2 {
+  font-family: "aboreto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 0.5em;
+  margin-bottom: -0.25em;
+}
+#content p {
+  font-family: "lora", serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+#content img {
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.125);
+}
+#content .img-desc {
+  font-family: "lora", serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: -0.75em;
+}
+#content .qa {
+  position: relative;
+  margin: 0 2rem 0.4rem 2rem;
+  padding: 1rem 1.5rem 0.9rem 1.5rem;
+  border-radius: 1.5rem;
+}
+#content .qa.question {
+  background-color: #ddd;
+  align-self: start;
+  margin-right: 4rem;
+  border-bottom-left-radius: 0;
+}
+#content .qa.question::after {
+  content: "";
+  position: absolute;
+  left: -0.5rem;
+  bottom: -0.3rem;
+  width: 2.2rem;
+  height: 2rem;
+  background-color: inherit;
+  clip-path: polygon(0% 100%, 40% 0%, 100% 70%);
+}
+#content .qa.answer {
+  background-color: #fcc;
+  align-self: end;
+  margin-left: 4rem;
+  border-bottom-right-radius: 0;
+}
+#content .qa.answer::after {
+  content: "";
+  position: absolute;
+  right: -0.5rem;
+  bottom: -0.3rem;
+  width: 2.2rem;
+  height: 2rem;
+  background-color: inherit;
+  clip-path: polygon(100% 100%, 60% 0%, 0% 70%);
+}
+#content .qa-person {
+  font-family: "lora", serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: -0.75em;
+}
+#content .qa.answer + .qa-person { /* Can't do this as a nested block i guess */
+  text-align: right;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/article.scss%22,%22../../sass/partials/_flex.scss%22,%22../../sass/partials/_globals.scss%22,%22../../sass/partials/_general.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAEA;ECDC;EACA;EACA;;ADEA;EE0CA,aAvBqB;ECMrB,WDqBmB;EACnB;EF7CC;;AAGD;EEqCA,aAtBc;ECKd,WDqBmB;EACnB;;AFtCA;EEiCA,aAvBqB;ECMrB,WDqBmB;EACnB;EFpCC;EACA;;AAGD;EE2BA,aAtBc;ECKd,WDqBmB;EACnB;EF9BC;;AAGD;EGgBA;;AHZA;EEkBA,aAtBc;ECKd,WDqBmB;EACnB;EFrBC;EACA;;AAGD;EACC;EACA;EACA;EACA;;AAEA;EACC;EAEA;EACA;EACA;;AAEA;EACC;EAEA;EACA;EACA;EACA;EACA;EAEA;EACA;;AAIF;EACC;EAEA;EACA;EACA;;AAEA;EACC;EAEA;EACA;EACA;EACA;EACA;EAEA;EACA;;AAKH;EErCA,aAtBc;ECKd,WDqBmB;EACnB;EFkCC;EACA;;AAED;EACC%22,%22file%22:%22article.css%22%7D */

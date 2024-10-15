@@ -10,9 +10,20 @@ html, body {
 
 body {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+}
+#content {
+  margin-top: 4.5rem;
+  flex: 1;
+  padding: 2.5rem 0;
+}
+#content.wide {
+  width: 80rem;
+}
+#content.thin {
+  width: 50rem;
 }
 
 br {
@@ -50,4 +61,4 @@ img {
   flex: none;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/global.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AACA;EACC;EACA;;;AAGD;EACC;EAAa;;;AAGd;EACC;EACA;EACA;EACA;;;AAKD;EACC;;;AAGD;EACC;EACA;EACA;EACA;;AAEA;EACC;EACA;;;AAIF;EACC;EACA;EACA;;AAEA;EACC;;;AAIF;EACC;;;AAGD;EACC;EACA;EACA;EACA%22,%22file%22:%22global.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/global.scss%22,%22../../sass/partials/_flex.scss%22,%22../../sass/partials/_globals.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACC;EACA;;;AAGD;EACC;EAAa;;;AAGd;ECCC;EASC;EDRD;EACA;;AAGD;EACC,YEdgB;EFehB;EACA;;AAEA;EAAS;;AACT;EAAS;;;AAIV;EACC;;;AAGD;EACC;EACA;EACA;EACA;;AAEA;EACC;EACA;;;AAIF;EACC;EACA;EACA;;AAEA;EACC;;;AAIF;EACC;;;AAGD;EACC;EACA;EACA;EACA%22,%22file%22:%22global.css%22%7D */

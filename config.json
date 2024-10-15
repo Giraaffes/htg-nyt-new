@@ -3,14 +3,14 @@
 		"host": "localhost",
 		"user": "root",
 		"password": "",
-		"database": "htgnyt",
+		"database": "htgnyt2",
 		"timezone": "Z"
 	},
 	"dbRemoteOptions": {
 		"host": "64.226.88.255",
 		"user": "marcus",
 		"password": "password",
-		"database": "htgnyt",
+		"database": "htgnyt2",
 		"timezone": "Z"
 	},
 	"githubWebhookId": "",

@@ -8,11 +8,11 @@
   background-color: #111;
   color: white;
   z-index: 2;
-  padding: 5.5rem 2rem;
   display: flex;
   flex-direction: column;
-  align-items: end;
   gap: 1.25rem;
+  align-items: end;
+  padding: 5.5rem 2rem;
 }
 #side-menu.shown {
   right: 0;
@@ -77,4 +77,4 @@
   margin: 0 0;
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/side-menu.scss%22,%22../../sass/partials/_globals.scss%22,%22../../sass/partials/_general.scss%22,%22../../sass/partials/_flex.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACC;EACA,OAHiB;EAIjB;EACA;EAEA;EAIA;EAEA,kBCJe;EDKf;EACA;EAEA;EACA;EACA;EACA;EACA;;AAbA;EACC;;AAcD;EAIC;EACA;EACA,KAJW;EE+BZ;EFvBC,WATW;;AEiCZ;EAAU;;AAIV;EACC;EAtCD;EAwCC;EAAa;EACb;EAAa;EACb,SFlCqB;;AEpBX;EACR;;;AFuBH;ECOA,aAvBe;ECQf,WDmBmB;ECjBlB,QDiBkB;EChBlB,aDgBkB;ECdjB;EDeF;ECQA;;AACA;EAAU;;AAIV;EACC;EAtCD;EAwCC;EAAa;EACb;EAAa;EACb,SF3BqB;;AE3BX;EACR;;;AF2BF;EAAI;EAAe;;AAGpB;EGNA;EACA;EAEA;EAKC,YHDwC;EGExC%22,%22file%22:%22side-menu.css%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../sass/side-menu.scss%22,%22../../sass/partials/_globals.scss%22,%22../../sass/partials/_flex.scss%22,%22../../sass/partials/_general.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAGA;EACC;EACA,OAHiB;EAIjB;EACA;EAEA;EAIA;EAEA,kBCJe;EDKf;EACA;EEhBA;EACA;EACA,KFgBsB;EACtB;EACA;;AAXA;EACC;;AAYD;EAIC;EACA;EACA,KAJW;EGiCZ;EHzBC,WATW;;AGmCZ;EAAU;;AAIV;EACC;EAtCD;EAwCC;EAAa;EACb;EAAa;EACb,SHpCqB;;AGlBX;EACR;;;AHqBH;ECWA,aAxBe;EEOf,WFqBmB;EEnBlB,QFmBkB;EElBlB,aFkBkB;EEhBjB;EFiBF;EEMA;;AACA;EAAU;;AAIV;EACC;EAtCD;EAwCC;EAAa;EACb;EAAa;EACb,SH7BqB;;AGzBX;EACR;;;AHyBF;EAAI;EAAe;;AAGpB;EELA;EACA;EAEA;EAKC,YFFwC;EEGxC%22,%22file%22:%22side-menu.css%22%7D */

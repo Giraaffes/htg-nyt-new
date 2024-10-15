@@ -8,7 +8,7 @@ import { escapeRegex, concatRegex, cookieString } from "#root/util.js";
 import config from "#root/config.json" assert {type: "json"};
 
 
-// (R) Custom render function
+// (R) Override rendering
 function reorderStylesAndScripts(html) {
 	let $ = cheerio.load(html);
 	$(" body link[rel=stylesheet]").appendTo("head");
@@ -16,7 +16,7 @@ function reorderStylesAndScripts(html) {
 	return $.html();
 }
 
-function render(res, view, ...args) {
+function render(req, res, next, view, ...args) {
 	let callbackArg = args.find(a => typeof a == "function");
 	if (callbackArg) args.splice(args.indexOf(callbackArg), 1);
 	
@@ -86,12 +86,12 @@ class Route {
 		if (doHeadersMatch) { next(); } else { next("route"); }
 	}
 
-	use(server, database) {
+	use(server, database, docs) {
 		server[this.match.method](this.match.path, 
 			this.checkHeaders.bind(this),
 			...this.middleHandlers, 
 			(req, res, next) => this.mainHandler(
-				req, res, next, render.bind(null, res), database
+				req, res, next, render.bind(null, req, res, next), database, docs
 			)
 		);
 	}
@@ -191,15 +191,15 @@ export async function register(moduleName) {
 	}
 };
 
-export async function init(database) {
+export async function init(database, docs) {
 	for (let m of modules) {
-		await m.init(database);
+		await m.init(database, docs);
 	}
 };
 
-export function useRoutes(server, database) {
+export function useRoutes(server, database, docs) {
 	let routes = modules.flatMap(m => m.routes);
 	for (let r of routes) {
-		r.use(server, database);
+		r.use(server, database, docs);
 	}
 }

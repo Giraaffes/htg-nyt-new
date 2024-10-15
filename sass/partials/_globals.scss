@@ -17,6 +17,7 @@ $shadow-alpha: 0.125;
 
 $header-alpha: 0.85;
 $info-alpha: 0.75;
+$article-desc-alpha: 0.6;
 $hr-alpha: 0.11;
 
 // Fonts
@@ -31,14 +32,15 @@ $font-config: (
 		"small": 0.95rem 400
 	),
 	$article-header-font: (
-		"large": 3rem 500, // not used yet, will adjust
+		"large": 2.5rem 600,
 		"medium": 1.5rem 600,
 		"small": 1.1rem 300
 	),
 	$article-font: (
-		"large": 2rem 400, // not used (yet?), will adjust
-		"medium": 1.1rem 400,
-		"small": 0.95rem 400
+		"large": 1.5rem 400,
+		"medium": 1.2rem 400,
+		"small": 1.1rem 400,
+		"tiny": 0.95rem 400
 	)
 );
 
